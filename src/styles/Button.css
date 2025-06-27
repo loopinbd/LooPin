@@ -1,0 +1,49 @@
+.custom-button {
+  padding: 12px 20px;
+  font-weight: bold;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+  color: black;
+  width: 100%;
+}
+
+/* Primary: Golden */
+.custom-button.primary {
+  background-color: gold;
+}
+
+.custom-button.primary:hover {
+  background-color: #ffd700;
+}
+
+/* Secondary: Transparent border */
+.custom-button.secondary {
+  background-color: transparent;
+  border: 1px solid gold;
+  color: gold;
+}
+
+.custom-button.secondary:hover {
+  background-color: rgba(255, 215, 0, 0.1);
+}
+
+/* Danger: Red tone */
+.custom-button.danger {
+  background-color: darkred;
+  color: white;
+}
+
+.custom-button.danger:hover {
+  background-color: crimson;
+}
+
+/* Disabled style */
+.custom-button.disabled {
+  background-color: #333;
+  color: #888;
+  cursor: not-allowed;
+  pointer-events: none;
+}
