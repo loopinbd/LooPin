@@ -1,0 +1,74 @@
+.sidebar-container {
+  position: fixed;
+  top: 0;
+  right: -260px;
+  height: 100%;
+  width: 260px;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: right 0.3s ease-in-out;
+  z-index: 999;
+  display: flex;
+}
+
+.sidebar-container.open {
+  right: 0;
+}
+
+.sidebar-content {
+  width: 100%;
+  background-color: #000;
+  padding: 20px;
+  z-index: 1001;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sidebar-logo {
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+}
+
+.sidebar-app-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: gold;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item {
+  padding: 12px 10px;
+  color: white;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.menu-item:hover {
+  background-color: rgba(255, 215, 0, 0.1);
+}
+
+.menu-item.active {
+  background-color: gold;
+  color: #000;
+  font-weight: bold;
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: calc(100vw - 260px);
+  height: 100%;
+  background-color: transparent;
+  z-index: 1000;
+}
