@@ -1,0 +1,44 @@
+.team-commission-container {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.commission-card {
+  background-color: #000;
+  border: 2px solid gold;
+  border-radius: 16px;
+  padding: 15px 20px;
+  min-width: 180px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 6px 16px rgba(255, 215, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.commission-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+}
+
+.level-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: gold;
+  margin-bottom: 8px;
+}
+
+.team-count {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #ccc;
+}
+
+.earned-amount {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 4px gold;
+}
