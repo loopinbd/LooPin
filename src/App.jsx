@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 // Pages
 import Register from "./pages/Register";
@@ -27,7 +27,7 @@ function App() {
         <Route path="/verify" element={<Verification />} />
         <Route path="/terms" element={<TermsPage />} />
 
-        {/* Protected Routes (Login required) */}
+        {/* Protected Routes */}
         <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/activation" element={<Activation />} />
@@ -36,12 +36,12 @@ function App() {
           <Route path="/support" element={<Support />} />
         </Route>
 
-        {/* Admin Route (Only for loopinbd@gmail.com) */}
+        {/* Admin Route */}
         <Route element={<ProtectedRoute adminOnly={true} />}>
           <Route path="/admin" element={<AdminPanel />} />
         </Route>
 
-        {/* 404 Not Found */}
+        {/* 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
