@@ -1,11 +1,14 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
+import { auth } from "../firebase";
 import InputField from "../components/InputField";
 import Button from "../components/Button";
 import "../styles/register.css";
 
 const Register = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [form, setForm] = useState({
     name: "",
@@ -18,6 +21,17 @@ const Register = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [firebaseError, setFirebaseError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  // Autofill referral code from URL
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const ref = queryParams.get("ref");
+    if (ref) {
+      setForm((prev) => ({ ...prev, referralCode: ref }));
+    }
+  }, [location.search]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -27,21 +41,40 @@ const Register = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    let newErrors = {};
-    if (!form.name) newErrors.name = "Name is required";
-    if (!form.email) newErrors.email = "Email is required";
-    if (!form.phone) newErrors.phone = "Phone is required";
-    if (!form.password) newErrors.password = "Password is required";
-    if (form.password !== form.confirmPassword)
-      newErrors.confirmPassword = "Passwords do not match";
-    if (!form.agree) newErrors.agree = "You must accept the terms";
-    setErrors(newErrors);
+    setErrors({});
+    setFirebaseError("");
 
-    if (Object.keys(newErrors).length === 0) {
-      // registration success — simulate sending to backend
-      navigate("/verify"); // redirect to verification page
+    const { name, email, phone, password, confirmPassword, agree } = form;
+
+    let newErrors = {};
+    if (!name) newErrors.name = "Name is required";
+    if (!email) newErrors.email = "Email is required";
+    if (!phone) newErrors.phone = "Phone is required";
+    if (!password) newErrors.password = "Password is required";
+    if (password !== confirmPassword)
+      newErrors.confirmPassword = "Passwords do not match";
+    if (!agree) newErrors.agree = "You must accept the terms";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const userCred = await createUserWithEmailAndPassword(auth, email, password);
+      await sendEmailVerification(userCred.user);
+
+      // Optional: save form data to localStorage or Firestore
+      localStorage.setItem("userData", JSON.stringify(form));
+
+      navigate("/verify");
+    } catch (err) {
+      setFirebaseError(err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -118,11 +151,12 @@ const Register = () => {
             </label>
           </div>
           {errors.agree && <div className="error-message">{errors.agree}</div>}
+          {firebaseError && <div className="error-message">{firebaseError}</div>}
 
           <Button
-            text="Register"
+            text={loading ? "Please wait..." : "Register"}
             type="submit"
-            disabled={!form.agree}
+            disabled={!form.agree || loading}
           />
 
           <p className="login-redirect">
