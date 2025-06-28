@@ -1,0 +1,48 @@
+.verification-page {
+  background-color: black;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 20px;
+}
+
+.verification-box {
+  background-color: #111;
+  border: 1px solid gold;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+.verification-logo {
+  width: 70px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.verification-box h2 {
+  color: gold;
+  margin-bottom: 10px;
+}
+
+.verification-box p {
+  color: #ccc;
+  font-size: 14px;
+  margin: 8px 0;
+}
+
+.note {
+  color: orange;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.redirect-msg {
+  color: #777;
+  font-style: italic;
+  margin-top: 20px;
+}
