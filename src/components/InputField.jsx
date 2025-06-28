@@ -3,7 +3,6 @@ import "../styles/InputField.css";
 
 const InputField = ({
   label,
-  name, // <-- ADD THIS
   type = "text",
   value,
   onChange,
@@ -18,7 +17,6 @@ const InputField = ({
       <input
         className={`custom-input ${error ? "input-error" : ""}`}
         type={type}
-        name={name} // <-- IMPORTANT
         value={value}
         onChange={onChange}
         placeholder={placeholder}
