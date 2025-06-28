@@ -1,0 +1,46 @@
+.support-page {
+  padding: 30px;
+  background-color: black;
+  color: white;
+  min-height: 100vh;
+}
+
+.support-title {
+  text-align: center;
+  color: gold;
+  margin-bottom: 20px;
+}
+
+.message-box {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.message-box textarea {
+  resize: none;
+  height: 100px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid gold;
+  background-color: #111;
+  color: white;
+  font-size: 14px;
+}
+
+.send-btn {
+  width: fit-content;
+  padding: 10px 20px;
+  border: none;
+  background-color: gold;
+  color: black;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.send-btn:hover {
+  background-color: #ffd700cc;
+}
