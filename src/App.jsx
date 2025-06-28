@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Pages
 import Register from "./pages/Register";
@@ -19,30 +19,32 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
-    <Routes>
-      {/* Public Routes */}
-      <Route path="/" element={<Register />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/verify" element={<Verification />} />
-      <Route path="/terms" element={<TermsPage />} />
+    <Router>
+      <Routes>
+        {/* Public routes */}
+        <Route path="/" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/verify" element={<Verification />} />
+        <Route path="/terms" element={<TermsPage />} />
 
-      {/* Protected Routes */}
-      <Route element={<ProtectedRoute />}>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/activation" element={<Activation />} />
-        <Route path="/withdraw" element={<Withdraw />} />
-        <Route path="/referral" element={<Referral />} />
-        <Route path="/support" element={<Support />} />
-      </Route>
+        {/* Protected Routes (Login Required) */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/activation" element={<Activation />} />
+          <Route path="/withdraw" element={<Withdraw />} />
+          <Route path="/referral" element={<Referral />} />
+          <Route path="/support" element={<Support />} />
+        </Route>
 
-      {/* Admin Route */}
-      <Route element={<ProtectedRoute adminOnly={true} />}>
-        <Route path="/admin" element={<AdminPanel />} />
-      </Route>
+        {/* Admin Panel (only loopinbd@gmail.com) */}
+        <Route element={<ProtectedRoute adminOnly={true} />}>
+          <Route path="/admin" element={<AdminPanel />} />
+        </Route>
 
-      {/* 404 */}
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+        {/* Not Found route */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
   );
 }
 
