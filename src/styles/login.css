@@ -1,51 +1,73 @@
+/* login.css */
+
 .login-page {
+  min-height: 100vh;
+  background-color: #000;
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
-  min-height: 100vh;
-  color: white;
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  background-image: radial-gradient(circle at center, #111 0%, #000 100%);
 }
 
 .login-box {
-  background-color: #111;
-  border: 1px solid gold;
-  padding: 30px;
+  background-color: rgba(0, 0, 0, 0.85);
+  border: 1px solid goldenrod;
+  box-shadow: 0 0 15px rgba(218, 165, 32, 0.5);
+  padding: 2rem 2.5rem;
   border-radius: 12px;
-  width: 100%;
   max-width: 400px;
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+  width: 100%;
+  animation: fadeIn 1s ease-in-out;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .login-title {
-  color: gold;
-  text-align: center;
   font-size: 28px;
-  margin-bottom: 8px;
+  color: goldenrod;
+  margin-bottom: 0.25rem;
 }
 
 .login-tagline {
-  text-align: center;
-  font-size: 14px;
-  margin-bottom: 20px;
-  color: #ccc;
-}
-
-.register-redirect {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 14px;
-  color: #aaa;
-}
-
-.register-link {
-  color: gold;
-  cursor: pointer;
+  font-size: 13px;
+  color: #ddd;
+  margin-bottom: 1.5rem;
 }
 
 .error-message {
-  color: red;
-  font-size: 12px;
-  margin-top: 6px;
-  text-align: center;
+  color: #ff4c4c;
+  font-size: 14px;
+  margin: 0.5rem 0;
+}
+
+.register-redirect {
+  font-size: 14px;
+  margin-top: 1.5rem;
+  color: #ccc;
+}
+
+.register-link {
+  color: goldenrod;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 4px;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.register-link:hover {
+  color: #ffd700;
 }
