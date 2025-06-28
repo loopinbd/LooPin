@@ -1,5 +1,5 @@
 import React from "react";
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 // Pages
 import Register from "./pages/Register";
@@ -19,32 +19,30 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        {/* Public Routes */}
-        <Route path="/" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/verify" element={<Verification />} />
-        <Route path="/terms" element={<TermsPage />} />
+    <Routes>
+      {/* Public Routes */}
+      <Route path="/" element={<Register />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/verify" element={<Verification />} />
+      <Route path="/terms" element={<TermsPage />} />
 
-        {/* Protected Routes */}
-        <Route element={<ProtectedRoute />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/activation" element={<Activation />} />
-          <Route path="/withdraw" element={<Withdraw />} />
-          <Route path="/referral" element={<Referral />} />
-          <Route path="/support" element={<Support />} />
-        </Route>
+      {/* Protected Routes */}
+      <Route element={<ProtectedRoute />}>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/activation" element={<Activation />} />
+        <Route path="/withdraw" element={<Withdraw />} />
+        <Route path="/referral" element={<Referral />} />
+        <Route path="/support" element={<Support />} />
+      </Route>
 
-        {/* Admin Route */}
-        <Route element={<ProtectedRoute adminOnly={true} />}>
-          <Route path="/admin" element={<AdminPanel />} />
-        </Route>
+      {/* Admin Route */}
+      <Route element={<ProtectedRoute adminOnly={true} />}>
+        <Route path="/admin" element={<AdminPanel />} />
+      </Route>
 
-        {/* 404 */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Router>
+      {/* 404 */}
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 
