@@ -1,0 +1,35 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 20px;
+  color: white;
+  background-color: black;
+}
+
+.balance-section,
+.team-commission-section,
+.referral-section {
+  background-color: #111;
+  border: 1px solid gold;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+}
+
+.dashboard-footer {
+  text-align: center;
+  padding: 16px 0;
+  color: #aaa;
+  font-size: 13px;
+  position: relative;
+  border-top: 1px solid #333;
+}
+
+.watermark {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.1);
+}
