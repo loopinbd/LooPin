@@ -1,0 +1,51 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  min-height: 100vh;
+  color: white;
+}
+
+.login-box {
+  background-color: #111;
+  border: 1px solid gold;
+  padding: 30px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+}
+
+.login-title {
+  color: gold;
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.login-tagline {
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #ccc;
+}
+
+.register-redirect {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.register-link {
+  color: gold;
+  cursor: pointer;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 6px;
+  text-align: center;
+}
