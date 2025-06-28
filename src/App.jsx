@@ -22,7 +22,7 @@ function App() {
     <Router>
       <Routes>
         {/* Public routes */}
-        <Route path="/" element={<Register />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/verify" element={<Verification />} />
         <Route path="/terms" element={<TermsPage />} />
