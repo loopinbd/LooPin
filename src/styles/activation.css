@@ -1,0 +1,65 @@
+.activation-page {
+  padding: 30px;
+  color: white;
+  background-color: black;
+  min-height: 100vh;
+}
+
+.activation-box {
+  background-color: #111;
+  border: 1px solid gold;
+  padding: 25px;
+  border-radius: 12px;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+}
+
+.activation-box h2 {
+  color: gold;
+  margin-bottom: 10px;
+}
+
+.method-toggle {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 10px;
+}
+
+.method-toggle button {
+  background: #222;
+  color: white;
+  border: 1px solid gold;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.method-toggle button.active {
+  background: gold;
+  color: black;
+}
+
+.payment-section {
+  margin-top: 10px;
+}
+
+.usdt-address {
+  background-color: #222;
+  color: gold;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.success {
+  border: 1px solid green;
+}
+
+.error {
+  border: 1px solid red;
+}
