@@ -1,0 +1,18 @@
+.withdraw-page {
+  padding: 30px;
+  background-color: black;
+  min-height: 100vh;
+  color: white;
+}
+
+.withdraw-heading {
+  color: gold;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.withdraw-history-section {
+  margin-top: 40px;
+  border-top: 1px solid #333;
+  padding-top: 20px;
+}
