@@ -1,0 +1,29 @@
+.referral-page {
+  padding: 30px;
+  min-height: 100vh;
+  background-color: black;
+  color: white;
+}
+
+.referral-heading {
+  text-align: center;
+  color: gold;
+  margin-bottom: 20px;
+}
+
+.team-section {
+  margin-top: 40px;
+  border-top: 1px solid #333;
+  padding-top: 20px;
+}
+
+.inactive-box {
+  background-color: #111;
+  border: 1px solid red;
+  text-align: center;
+  padding: 30px;
+  border-radius: 12px;
+  color: #f77;
+  max-width: 450px;
+  margin: 0 auto;
+}
