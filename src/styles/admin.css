@@ -1,0 +1,43 @@
+.admin-panel {
+  padding: 30px;
+  background-color: black;
+  color: white;
+  min-height: 100vh;
+}
+
+.admin-title {
+  text-align: center;
+  color: gold;
+  margin-bottom: 30px;
+}
+
+.admin-section {
+  margin-bottom: 30px;
+  border: 1px solid gold;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #111;
+}
+
+.admin-section h3 {
+  color: gold;
+  margin-bottom: 10px;
+}
+
+.data-box {
+  background-color: #222;
+  color: #ccc;
+  padding: 15px;
+  border-radius: 8px;
+  min-height: 60px;
+}
+
+.admin-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid gold;
+  background-color: #222;
+  color: white;
+  border-radius: 6px;
+  margin-top: 10px;
+}
