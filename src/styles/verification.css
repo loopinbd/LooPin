@@ -1,48 +1,48 @@
 .verification-page {
-  background-color: black;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: black;
   color: white;
-  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
 }
 
 .verification-box {
-  background-color: #111;
-  border: 1px solid gold;
-  padding: 30px;
-  border-radius: 12px;
-  max-width: 420px;
   text-align: center;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+  max-width: 400px;
+  border: 1px solid goldenrod;
+  padding: 2rem;
+  border-radius: 12px;
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 10px goldenrod;
 }
 
 .verification-logo {
-  width: 70px;
-  height: auto;
-  margin-bottom: 15px;
+  width: 60px;
+  margin-bottom: 1rem;
 }
 
-.verification-box h2 {
-  color: gold;
-  margin-bottom: 10px;
-}
-
-.verification-box p {
-  color: #ccc;
-  font-size: 14px;
-  margin: 8px 0;
-}
-
-.note {
-  color: orange;
+.app-name {
+  font-size: 24px;
   font-weight: bold;
-  margin-top: 10px;
+  color: goldenrod;
 }
 
+.tagline {
+  font-size: 14px;
+  color: #ddd;
+  margin-bottom: 1.5rem;
+}
+
+.verify-title {
+  font-size: 20px;
+  margin-bottom: 1rem;
+}
+
+.verify-instruction,
+.note,
 .redirect-msg {
-  color: #777;
-  font-style: italic;
-  margin-top: 20px;
+  font-size: 14px;
+  line-height: 1.5;
 }
