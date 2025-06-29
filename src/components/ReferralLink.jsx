@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/ReferralLink.css";
 
-const ReferralLink = ({ userId, isActive }) => {
+const ReferralLink = ({ userId = "unknown", isActive = false }) => {
   const [copied, setCopied] = useState(false);
 
   const baseUrl = "https://loopin.com/register"; // Replace with actual domain
