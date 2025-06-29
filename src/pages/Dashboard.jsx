@@ -1,8 +1,8 @@
 import React from "react";
 import PageWrapper from "../components/PageWrapper";
-import BalanceCard from "../components/BalanceCard";
-import TeamCommission from "../components/TeamCommission";
-import ReferralLink from "../components/ReferralLink";
+// import BalanceCard from "../components/BalanceCard";
+// import TeamCommission from "../components/TeamCommission";
+// import ReferralLink from "../components/ReferralLink";
 import "../styles/dashboard.css";
 
 const Dashboard = () => {
@@ -10,15 +10,18 @@ const Dashboard = () => {
     <PageWrapper>
       <div className="dashboard-container">
         <section className="balance-section">
-          <BalanceCard />
+          {/* <BalanceCard /> */}
+          <p>Balance section working ✅</p>
         </section>
 
         <section className="team-commission-section">
-          <TeamCommission />
+          {/* <TeamCommission /> */}
+          <p>Team commission working ✅</p>
         </section>
 
         <section className="referral-section">
-          <ReferralLink />
+          {/* <ReferralLink /> */}
+          <p>Referral section working ✅</p>
         </section>
       </div>
 
