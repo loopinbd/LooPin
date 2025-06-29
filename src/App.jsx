@@ -13,6 +13,7 @@ import Support from "./pages/Support";
 import TermsPage from "./pages/TermsPage";
 import AdminPanel from "./pages/AdminPanel";
 import NotFound from "./pages/NotFound";
+import HomeRedirect from "./pages/HomeRedirect"; // ✅ add this
 
 // Components
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -20,6 +21,9 @@ import ProtectedRoute from "./components/ProtectedRoute";
 function App() {
   return (
     <Routes>
+      {/* ✅ Home redirect */}
+      <Route path="/" element={<HomeRedirect />} />
+
       {/* Public routes */}
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
