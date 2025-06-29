@@ -5,14 +5,24 @@ import TeamCommission from "../components/TeamCommission";
 import "../styles/referral.css";
 
 const Referral = () => {
-  const [isActive, setIsActive] = useState(false); // pretend from user data
+  const [isActive, setIsActive] = useState(null); // null = loading
 
-  // Simulate activation check
+  // Simulate activation check (replace with Firebase logic later)
   useEffect(() => {
-    // Later replace with actual activation state from Firebase
-    const userActive = true; // change to false to test inactive view
+    const userActive = true; // change to false to test
     setIsActive(userActive);
   }, []);
+
+  // ✅ Safe rendering: show loading while checking user
+  if (isActive === null) {
+    return (
+      <PageWrapper>
+        <div className="referral-page" style={{ color: "#fff", textAlign: "center", padding: "50px" }}>
+          <h2>Checking account status...</h2>
+        </div>
+      </PageWrapper>
+    );
+  }
 
   return (
     <PageWrapper>
@@ -30,7 +40,7 @@ const Referral = () => {
         ) : (
           <div className="inactive-box">
             <h2>Referral System Locked</h2>
-            <p>Active your account to get referral link and earn commission.</p>
+            <p>Activate your account to get referral link and earn commission.</p>
           </div>
         )}
       </div>
