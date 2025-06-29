@@ -1,10 +1,22 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
-const ProtectedRoute = ({ children }) => {
-  const isLoggedIn = !!localStorage.getItem("token"); // Update logic as needed
+const ProtectedRoute = ({ adminOnly = false }) => {
+  const token = localStorage.getItem("token");
+  const email = localStorage.getItem("email");
 
-  return isLoggedIn ? children : <Navigate to="/login" />;
+  const isLoggedIn = !!token;
+  const isAdmin = email === "loopinbd@gmail.com";
+
+  if (!isLoggedIn) {
+    return <Navigate to="/login" />;
+  }
+
+  if (adminOnly && !isAdmin) {
+    return <Navigate to="/dashboard" />;
+  }
+
+  return <Outlet />;
 };
 
 export default ProtectedRoute;
