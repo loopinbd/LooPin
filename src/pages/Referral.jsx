@@ -1,24 +1,22 @@
 import React, { useState, useEffect } from "react";
 import PageWrapper from "../components/PageWrapper";
-import ReferralLink from "../components/ReferralLink";
-import TeamCommission from "../components/TeamCommission";
+// import ReferralLink from "../components/ReferralLink";
+// import TeamCommission from "../components/TeamCommission";
 import "../styles/referral.css";
 
 const Referral = () => {
-  const [isActive, setIsActive] = useState(null); // null = loading
+  const [isActive, setIsActive] = useState(null);
 
-  // Simulate activation check (replace with Firebase logic later)
   useEffect(() => {
-    const userActive = true; // change to false to test
+    const userActive = true;
     setIsActive(userActive);
   }, []);
 
-  // ✅ Safe rendering: show loading while checking user
   if (isActive === null) {
     return (
       <PageWrapper>
-        <div className="referral-page" style={{ color: "#fff", textAlign: "center", padding: "50px" }}>
-          <h2>Checking account status...</h2>
+        <div style={{ padding: "50px", color: "#fff", textAlign: "center" }}>
+          <h2>Loading...</h2>
         </div>
       </PageWrapper>
     );
@@ -26,21 +24,19 @@ const Referral = () => {
 
   return (
     <PageWrapper>
-      <div className="referral-page">
+      <div className="referral-page" style={{ color: "#fff", padding: "40px" }}>
         {isActive ? (
           <>
-            <h2 className="referral-heading">Your Referral Link</h2>
-            <ReferralLink />
+            <h2>Your Referral Link</h2>
+            <p>Link: https://loopin.vercel.app/?ref=yourcode</p>
 
-            <section className="team-section">
-              <h3>Level Wise Team & Commission</h3>
-              <TeamCommission />
-            </section>
+            <h3>Team Commission</h3>
+            <p>Level 1: $10<br />Level 2: $5</p>
           </>
         ) : (
-          <div className="inactive-box">
+          <div>
             <h2>Referral System Locked</h2>
-            <p>Activate your account to get referral link and earn commission.</p>
+            <p>Activate your account to get referral link.</p>
           </div>
         )}
       </div>
