@@ -1,7 +1,7 @@
 .input-field-container {
   display: flex;
   flex-direction: column;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .input-label {
@@ -18,24 +18,27 @@
   background-color: #111;
   color: white;
   font-size: 14px;
+  transition: border 0.3s, box-shadow 0.3s;
   outline: none;
-  transition: border 0.3s;
 }
 
 .custom-input:focus {
   border-color: #ffd700;
+  box-shadow: 0 0 5px rgba(255, 215, 0, 0.4);
 }
 
 .custom-input::placeholder {
-  color: #999;
+  color: #888;
+  font-style: italic;
 }
 
 .input-error {
-  border-color: red;
+  border-color: red !important;
 }
 
 .input-error-message {
   margin-top: 4px;
-  color: red;
+  color: #ff4d4d;
   font-size: 12px;
+  margin-left: 2px;
 }
