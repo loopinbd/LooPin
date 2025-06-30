@@ -52,9 +52,22 @@ const Register = () => {
     if (!name) newErrors.name = "Name is required";
     if (!email) newErrors.email = "Email is required";
     if (!phone) newErrors.phone = "Phone is required";
-    if (!password) newErrors.password = "Password is required";
-    if (password !== confirmPassword)
+
+    // Enhanced password validation
+    if (!password) {
+      newErrors.password = "Password is required";
+    } else if (password.length < 6) {
+      newErrors.password = "Password must be at least 6 characters.";
+    } else if (!/[A-Z]/.test(password)) {
+      newErrors.password = "Password must contain at least one uppercase letter.";
+    } else if (!/[0-9]/.test(password)) {
+      newErrors.password = "Password must include at least one number.";
+    }
+
+    if (password !== confirmPassword) {
       newErrors.confirmPassword = "Passwords do not match";
+    }
+
     if (!agree) newErrors.agree = "You must accept the terms";
 
     if (Object.keys(newErrors).length > 0) {
@@ -67,12 +80,28 @@ const Register = () => {
       const userCred = await createUserWithEmailAndPassword(auth, email, password);
       await sendEmailVerification(userCred.user);
 
-      // Optional: save form data to localStorage or Firestore
       localStorage.setItem("userData", JSON.stringify(form));
 
       navigate("/verify");
     } catch (err) {
-      setFirebaseError(err.message);
+      let msg = "";
+      switch (err.code) {
+        case "auth/email-already-in-use":
+          msg = "This email is already registered.";
+          break;
+        case "auth/invalid-email":
+          msg = "Invalid email address.";
+          break;
+        case "auth/weak-password":
+          msg = "Password should be at least 6 characters.";
+          break;
+        case "auth/network-request-failed":
+          msg = "Network error. Please check your connection.";
+          break;
+        default:
+          msg = "Registration failed. Please try again.";
+      }
+      setFirebaseError(msg);
     } finally {
       setLoading(false);
     }
