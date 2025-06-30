@@ -1,13 +1,15 @@
 .custom-button {
+  width: 100%;
   padding: 12px 20px;
   font-weight: bold;
   font-size: 14px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s, color 0.3s;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
   color: black;
-  width: 100%;
+  text-align: center;
+  letter-spacing: 0.4px;
 }
 
 /* Primary: Golden */
@@ -17,6 +19,7 @@
 
 .custom-button.primary:hover {
   background-color: #ffd700;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
 }
 
 /* Secondary: Transparent border */
@@ -27,7 +30,8 @@
 }
 
 .custom-button.secondary:hover {
-  background-color: rgba(255, 215, 0, 0.1);
+  background-color: rgba(255, 215, 0, 0.08);
+  box-shadow: 0 0 6px rgba(255, 215, 0, 0.2);
 }
 
 /* Danger: Red tone */
@@ -38,12 +42,15 @@
 
 .custom-button.danger:hover {
   background-color: crimson;
+  box-shadow: 0 0 6px rgba(220, 20, 60, 0.4);
 }
 
-/* Disabled style */
-.custom-button.disabled {
+/* Disabled state */
+.custom-button.disabled,
+.custom-button:disabled {
   background-color: #333;
-  color: #888;
+  color: #999;
   cursor: not-allowed;
   pointer-events: none;
+  box-shadow: none;
 }
