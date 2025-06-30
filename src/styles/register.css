@@ -2,52 +2,64 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
+  background-color: #000;
   min-height: 100vh;
-  color: white;
+  padding: 20px;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .register-box {
   background-color: #111;
   border: 1px solid gold;
-  padding: 30px;
-  border-radius: 12px;
+  padding: 30px 25px;
+  border-radius: 16px;
   width: 100%;
-  max-width: 400px;
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+  max-width: 420px;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+  transition: all 0.3s ease;
 }
 
 .register-title {
   color: gold;
   text-align: center;
-  font-size: 28px;
-  margin-bottom: 8px;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  letter-spacing: 1px;
 }
 
 .register-tagline {
   text-align: center;
   font-size: 14px;
-  margin-bottom: 20px;
-  color: #ccc;
+  margin-bottom: 25px;
+  color: #bbb;
 }
 
 .checkbox-wrapper {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin: 10px 0;
+  margin: 14px 0 6px;
   font-size: 14px;
+  color: #ddd;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+  accent-color: gold;
+  cursor: pointer;
 }
 
 .terms-link {
   color: gold;
   cursor: pointer;
   text-decoration: underline;
+  font-weight: 500;
 }
 
 .login-redirect {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 25px;
   font-size: 14px;
   color: #aaa;
 }
@@ -55,10 +67,12 @@
 .login-link {
   color: gold;
   cursor: pointer;
+  font-weight: 500;
 }
 
 .error-message {
-  color: red;
+  color: #ff4d4d;
   font-size: 12px;
   margin-top: 4px;
+  margin-left: 2px;
 }
