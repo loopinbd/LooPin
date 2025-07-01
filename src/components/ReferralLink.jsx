@@ -1,24 +1,26 @@
 import React, { useState } from "react";
 import "../styles/ReferralLink.css";
+import copyToClipboard from "../utils/copyToClipboard"; // ✅ utils import
 
-const ReferralLink = ({ userId = "unknown", isActive = false }) => {
+const ReferralLink = ({ userId = "", isActive = false }) => {
   const [copied, setCopied] = useState(false);
 
-  const baseUrl = "https://loopin.com/register"; // Replace with actual domain
+  const baseUrl = "https://loopin.com/register"; // 🔁 Replace with real domain
   const referralLink = `${baseUrl}?ref=${userId}`;
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(referralLink).then(() => {
+  const handleCopy = async () => {
+    const success = await copyToClipboard(referralLink);
+    if (success) {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    });
+    }
   };
 
   if (!isActive) {
     return (
       <div className="referral-locked">
         <p>Your account is not activated.</p>
-        <p>Activate to get your referral link.</p>
+        <p className="referral-note">Activate to unlock your referral link.</p>
       </div>
     );
   }
