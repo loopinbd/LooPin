@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/Sidebar.css";
 import logo from "../assets/logo-preview.png";
 import { useLocation, useNavigate } from "react-router-dom";
+import LogoutButton from "./LogoutButton"; // ⬅️ Added logout button
 
 const Sidebar = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ const Sidebar = ({ isOpen, onClose }) => {
     { name: "Withdraw", path: "/withdraw" },
     { name: "Referral", path: "/referral" },
     { name: "Support", path: "/support" },
+    // { name: "Admin", path: "/admin" }, // Optional if admin-only
   ];
 
   return (
@@ -38,7 +40,12 @@ const Sidebar = ({ isOpen, onClose }) => {
             </div>
           ))}
         </nav>
+
+        <div className="sidebar-logout-wrapper">
+          <LogoutButton /> {/* ⬅️ added */}
+        </div>
       </div>
+
       <div className="sidebar-overlay" onClick={onClose} />
     </div>
   );
