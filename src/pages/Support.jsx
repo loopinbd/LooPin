@@ -1,19 +1,57 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PageWrapper from "../components/PageWrapper";
 import SupportChat from "../components/SupportChat";
 import "../styles/support.css";
+import { db } from "../firebase";
+import {
+  addDoc,
+  collection,
+  query,
+  where,
+  onSnapshot,
+  orderBy,
+  serverTimestamp,
+} from "firebase/firestore";
+import { useAuth } from "../context/AuthContext";
 
 const Support = () => {
-  const [messages, setMessages] = useState([
-    { from: "user", text: "Hello, I need help with activation." },
-    { from: "admin", text: "Sure! Please wait while we verify." },
-  ]);
+  const { user } = useAuth(); // get user info
+  const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
 
-  const sendMessage = () => {
+  useEffect(() => {
+    if (!user) return;
+
+    const q = query(
+      collection(db, "supportMessages"),
+      where("userId", "==", user.uid),
+      orderBy("createdAt", "asc")
+    );
+
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const msgs = snapshot.docs.map((doc) => doc.data());
+      setMessages(msgs);
+    });
+
+    return () => unsubscribe();
+  }, [user]);
+
+  const sendMessage = async () => {
     if (!newMessage.trim()) return;
-    setMessages([...messages, { from: "user", text: newMessage }]);
-    setNewMessage("");
+
+    try {
+      await addDoc(collection(db, "supportMessages"), {
+        userId: user.uid,
+        email: user.email,
+        content: newMessage,
+        createdAt: serverTimestamp(),
+        reply: "", // initially empty
+      });
+
+      setNewMessage("");
+    } catch (err) {
+      console.error("Failed to send message", err);
+    }
   };
 
   return (
