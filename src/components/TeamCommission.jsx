@@ -1,7 +1,15 @@
 import React from "react";
 import "../styles/TeamCommission.css";
 
-const TeamCommission = ({ levels }) => {
+const TeamCommission = ({ levels = [] }) => {
+  if (levels.length === 0) {
+    return (
+      <div className="no-team-data">
+        <p>No team data available.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="team-commission-container">
       {levels.map((level, index) => (
