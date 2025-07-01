@@ -1,43 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef } from "react";
 import "../styles/SupportChat.css";
 
-const SupportChat = ({ messages = [], onSend }) => {
-  const [input, setInput] = useState("");
+const SupportChat = ({ messages = [] }) => {
+  const chatEndRef = useRef(null);
 
-  const handleSend = () => {
-    if (input.trim() !== "") {
-      onSend(input.trim());
-      setInput("");
-    }
-  };
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   return (
     <div className="chat-container">
       <h3 className="chat-title">Support Chat</h3>
 
       <div className="chat-box">
-        {messages.length === 0 && (
+        {messages.length === 0 ? (
           <div className="empty-msg">No messages yet. Start a conversation!</div>
+        ) : (
+          messages.map((msg, index) => (
+            <div className="message-pair" key={index}>
+              <div className="chat-message user-msg">
+                <span>{msg.content}</span>
+              </div>
+              {msg.reply && (
+                <div className="chat-message admin-msg">
+                  <span>{msg.reply}</span>
+                </div>
+              )}
+            </div>
+          ))
         )}
-
-        {messages.map((msg, index) => (
-          <div
-            key={index}
-            className={`chat-message ${msg.sender === "admin" ? "admin-msg" : "user-msg"}`}
-          >
-            <span>{msg.text}</span>
-          </div>
-        ))}
-      </div>
-
-      <div className="chat-input-area">
-        <input
-          type="text"
-          placeholder="Type your message..."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        />
-        <button onClick={handleSend}>Send</button>
+        <div ref={chatEndRef} />
       </div>
     </div>
   );
