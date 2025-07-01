@@ -1,33 +1,35 @@
-import React from "react";
-import "../styles/WithdrawHistory.css";
+.status.pending {
+  color: orange;
+}
 
-const WithdrawHistory = ({ history = [] }) => {
-  if (history.length === 0) {
-    return <div className="no-history">No withdraw history available.</div>;
-  }
+.status.approved {
+  color: limegreen;
+}
 
-  return (
-    <div className="withdraw-history-container">
-      <h3 className="withdraw-history-title">Withdraw History</h3>
-      <div className="history-table">
-        <div className="history-header">
-          <div>Method</div>
-          <div>Amount</div>
-          <div>Status</div>
-        </div>
+.status.rejected {
+  color: crimson;
+}
 
-        {history.map((item, index) => (
-          <div className="history-row" key={index}>
-            <div>{item.method}</div>
-            <div>${item.amount.toFixed(2)}</div>
-            <div className={`status ${item.status.toLowerCase()}`}>
-              {item.status}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
+.history-header,
+.history-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 8px 12px;
+  border-bottom: 1px solid #333;
+}
 
-export default WithdrawHistory;
+.history-header {
+  font-weight: bold;
+  background-color: #111;
+  color: #ffd700;
+}
+
+.history-row {
+  color: #eee;
+}
+
+.no-history {
+  text-align: center;
+  color: #aaa;
+  padding: 20px;
+}
