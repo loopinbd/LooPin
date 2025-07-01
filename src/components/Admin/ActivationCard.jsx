@@ -1,24 +1,25 @@
 import React from "react";
-import "../../styles/AdminPanel.css";
+import "../../styles/admin.css";
 
 const ActivationCard = ({ request, onApprove, onReject }) => {
-  const {
-    userId,
-    paymentMethod,
-    transactionId,
-    amount,
-    timestamp,
-  } = request;
-
-  const formattedDate = new Date(timestamp).toLocaleString();
+  const { userId, email, amount, txnId, status } = request;
 
   return (
-    <div className="activation-card">
-      <h3>User ID: {userId}</h3>
-      <p><strong>Payment Method:</strong> {paymentMethod}</p>
-      <p><strong>Transaction ID:</strong> {transactionId}</p>
-      <p><strong>Amount:</strong> ${amount}</p>
-      <p><strong>Requested On:</strong> {formattedDate}</p>
+    <div className="admin-card">
+      <div><strong>User ID:</strong> {userId}</div>
+      <div><strong>Email:</strong> {email}</div>
+      <div><strong>Amount:</strong> ${amount}</div>
+      <div><strong>Transaction ID:</strong> {txnId}</div>
+      <div><strong>Status:</strong> <span className={`status ${status}`}>{status}</span></div>
 
-      <div className="activation-actions">
-        <button className="approve-btn" onClick={() => onApprove(userId)}>
+      {status === "pending" && (
+        <div className="admin-card-actions">
+          <button className="approve-btn" onClick={() => onApprove(request)}>Approve</button>
+          <button className="reject-btn" onClick={() => onReject(request)}>Reject</button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default ActivationCard;
