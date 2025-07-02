@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+} from "firebase/auth";
 import { auth } from "../firebase";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../firebase";
 import InputField from "../components/InputField";
 import Button from "../components/Button";
 import "../styles/register.css";
@@ -46,14 +51,13 @@ const Register = () => {
     setErrors({});
     setFirebaseError("");
 
-    const { name, email, phone, password, confirmPassword, agree } = form;
+    const { name, email, phone, password, confirmPassword, referralCode, agree } = form;
 
     let newErrors = {};
     if (!name) newErrors.name = "Name is required";
     if (!email) newErrors.email = "Email is required";
     if (!phone) newErrors.phone = "Phone is required";
 
-    // Enhanced password validation
     if (!password) {
       newErrors.password = "Password is required";
     } else if (password.length < 6) {
@@ -77,10 +81,26 @@ const Register = () => {
 
     setLoading(true);
     try {
+      // ✅ Create user
       const userCred = await createUserWithEmailAndPassword(auth, email, password);
-      await sendEmailVerification(userCred.user);
+      const user = userCred.user;
 
-      localStorage.setItem("userData", JSON.stringify(form));
+      // ✅ Send email verification
+      await sendEmailVerification(user);
+
+      // ✅ Store user data in Firestore
+      const userDoc = {
+        name,
+        email,
+        phone,
+        referralCode: referralCode || "",
+        isActive: false,
+        availableBalance: 0,
+        teamLevels: {}, // Level 1, 2, etc.
+        createdAt: new Date(),
+      };
+
+      await setDoc(doc(db, "users", user.uid), userDoc);
 
       navigate("/verify");
     } catch (err) {
