@@ -1,13 +1,38 @@
-import React, { useState } from "react";
+// AdminPanel.jsx
+import React, { useState, useEffect } from "react";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import PageWrapper from "../components/PageWrapper";
+import ActivationList from "../components/ActivationList";
+import WithdrawList from "../components/WithdrawList";
+import UserMessages from "../components/UserMessages";
+import UserList from "../components/UserList";
+import { db } from "../firebase";
 import "../styles/admin.css";
 
 const AdminPanel = () => {
-  const [dollarRate, setDollarRate] = useState(110); // default BDT rate
-  const [walletAddress, setWalletAddress] = useState("TRX123456789");
+  const [dollarRate, setDollarRate] = useState(110);
+  const [walletAddress, setWalletAddress] = useState("");
 
-  const handleRateChange = (e) => setDollarRate(e.target.value);
-  const handleAddressChange = (e) => setWalletAddress(e.target.value);
+  useEffect(() => {
+    const fetchSettings = async () => {
+      const settingsRef = doc(db, "admin", "settings");
+      const settingsSnap = await getDoc(settingsRef);
+      if (settingsSnap.exists()) {
+        const { dollarRate, walletAddress } = settingsSnap.data();
+        setDollarRate(dollarRate);
+        setWalletAddress(walletAddress);
+      }
+    };
+    fetchSettings();
+  }, []);
+
+  const handleSaveSettings = async () => {
+    await setDoc(doc(db, "admin", "settings"), {
+      dollarRate: Number(dollarRate),
+      walletAddress,
+    });
+    alert("Settings updated!");
+  };
 
   return (
     <PageWrapper>
@@ -16,12 +41,12 @@ const AdminPanel = () => {
 
         <section className="admin-section">
           <h3>Activation Requests</h3>
-          <div className="data-box">[List of activation requests here]</div>
+          <ActivationList />
         </section>
 
         <section className="admin-section">
           <h3>Withdraw Requests</h3>
-          <div className="data-box">[List of withdraw requests here]</div>
+          <WithdrawList />
         </section>
 
         <section className="admin-section">
@@ -29,7 +54,7 @@ const AdminPanel = () => {
           <input
             type="number"
             value={dollarRate}
-            onChange={handleRateChange}
+            onChange={(e) => setDollarRate(e.target.value)}
             className="admin-input"
           />
         </section>
@@ -39,19 +64,22 @@ const AdminPanel = () => {
           <input
             type="text"
             value={walletAddress}
-            onChange={handleAddressChange}
+            onChange={(e) => setWalletAddress(e.target.value)}
             className="admin-input"
           />
+          <button onClick={handleSaveSettings} className="admin-save-btn">
+            Save Settings
+          </button>
         </section>
 
         <section className="admin-section">
           <h3>Inbox (User Messages)</h3>
-          <div className="data-box">[Support messages from users]</div>
+          <UserMessages />
         </section>
 
         <section className="admin-section">
           <h3>Users</h3>
-          <div className="data-box">[List of registered users]</div>
+          <UserList />
         </section>
       </div>
     </PageWrapper>
