@@ -35,12 +35,13 @@ const Login = () => {
 
       if (!user.emailVerified) {
         setError("Please verify your email before logging in.");
+        navigate("/verify");
         return;
       }
 
-      // Save token and email (for route protection)
       localStorage.setItem("token", user.accessToken);
-      localStorage.setItem("email", user.email);
+      localStorage.setItem("email", user.email); // Optional
+      localStorage.setItem("uid", user.uid);
 
       if (user.email === "loopinbd@gmail.com") {
         navigate("/admin");
@@ -48,7 +49,16 @@ const Login = () => {
         navigate("/dashboard");
       }
     } catch (err) {
-      setError("Invalid email or password.");
+      let msg = "Login failed. Please try again.";
+      if (
+        err.code === "auth/wrong-password" ||
+        err.code === "auth/user-not-found"
+      ) {
+        msg = "Invalid email or password.";
+      } else if (err.code === "auth/network-request-failed") {
+        msg = "Network error. Please check your connection.";
+      }
+      setError(msg);
     } finally {
       setLoading(false);
     }
@@ -79,7 +89,11 @@ const Login = () => {
 
           {error && <div className="error-message">{error}</div>}
 
-          <Button text={loading ? "Logging in..." : "Login"} type="submit" disabled={loading} />
+          <Button
+            text={loading ? "Logging in..." : "Login"}
+            type="submit"
+            disabled={loading}
+          />
 
           <p className="register-redirect">
             Not registered yet?{" "}
