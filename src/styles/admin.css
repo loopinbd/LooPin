@@ -1,35 +1,44 @@
 .admin-panel {
-  padding: 30px;
-  background-color: black;
+  padding: 2rem;
+  background-color: #000;
   color: white;
   min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .admin-title {
   text-align: center;
   color: gold;
-  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.2);
 }
 
 .admin-section {
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
   border: 1px solid gold;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 1.5rem;
+  border-radius: 12px;
   background-color: #111;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.05);
 }
 
 .admin-section h3 {
   color: gold;
-  margin-bottom: 10px;
+  font-size: 18px;
+  margin-bottom: 12px;
+  border-bottom: 1px dashed gold;
+  padding-bottom: 6px;
 }
 
 .data-box {
   background-color: #222;
   color: #ccc;
-  padding: 15px;
+  padding: 1rem;
   border-radius: 8px;
   min-height: 60px;
+  font-size: 14px;
 }
 
 .admin-input {
@@ -38,6 +47,13 @@
   border: 1px solid gold;
   background-color: #222;
   color: white;
-  border-radius: 6px;
+  border-radius: 8px;
+  font-size: 14px;
   margin-top: 10px;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.admin-input:focus {
+  border-color: #ffd700;
 }
