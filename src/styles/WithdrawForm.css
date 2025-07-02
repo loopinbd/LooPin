@@ -5,24 +5,25 @@
   padding: 25px;
   max-width: 500px;
   margin: 30px auto;
-  box-shadow: 0 8px 18px rgba(255, 215, 0, 0.1);
+  box-shadow: 0 8px 18px rgba(255, 215, 0, 0.12);
   color: white;
 }
 
 .form-title {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
   color: gold;
-  margin-bottom: 20px;
   text-align: center;
+  margin-bottom: 20px;
 }
 
+/* Method Toggle */
 .method-options {
   display: flex;
   gap: 10px;
-  margin-bottom: 15px;
   justify-content: center;
   flex-wrap: wrap;
+  margin-bottom: 18px;
 }
 
 .method-option {
@@ -32,11 +33,11 @@
   border-radius: 10px;
   color: white;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
 }
 
 .method-option:hover {
-  background-color: rgba(255, 215, 0, 0.1);
+  background-color: rgba(255, 215, 0, 0.15);
 }
 
 .method-option.selected {
@@ -45,18 +46,25 @@
   font-weight: bold;
 }
 
+/* Inputs */
 .withdraw-input {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 12px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
   background-color: #111;
   border: 1px solid gold;
   border-radius: 8px;
   color: white;
   font-size: 14px;
   outline: none;
+  transition: border 0.2s ease;
 }
 
+.withdraw-input:focus {
+  border-color: #ffd700;
+}
+
+/* Balance Note */
 .balance-note {
   text-align: right;
   font-size: 13px;
@@ -64,6 +72,7 @@
   margin-bottom: 10px;
 }
 
+/* Error Text */
 .error-text {
   color: red;
   font-size: 13px;
@@ -71,6 +80,7 @@
   text-align: center;
 }
 
+/* Button */
 .withdraw-btn {
   width: 100%;
   padding: 12px;
@@ -80,9 +90,18 @@
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background-color 0.3s;
 }
 
 .withdraw-btn:hover {
   background-color: #ffd700;
 }
+
+/* Optional: Responsive tweak */
+
+@media (max-width: 480px) {
+  .withdraw-form {
+    padding: 20px 15px;
+  }
+}
+
