@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import PageWrapper from "../components/PageWrapper";
-import ActivationList from "../components/ActivationList";
+import ActivationStatus from "../components/ActivationStatus";
 import WithdrawList from "../components/WithdrawList";
 import UserMessages from "../components/UserMessages";
 import UserList from "../components/UserList";
