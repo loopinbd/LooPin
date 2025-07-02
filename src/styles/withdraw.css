@@ -1,18 +1,22 @@
 .withdraw-page {
-  padding: 30px;
-  background-color: black;
+  padding: 2rem;
+  background-color: #000;
   min-height: 100vh;
-  color: white;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .withdraw-heading {
   color: gold;
+  font-size: 24px;
+  font-weight: bold;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.2);
 }
 
 .withdraw-history-section {
-  margin-top: 40px;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
   border-top: 1px solid #333;
-  padding-top: 20px;
 }
