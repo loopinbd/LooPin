@@ -1,0 +1,49 @@
+/* styles/TeamView.css */
+
+.team-view-container {
+  padding: 20px;
+  background-color: #111;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.1);
+  color: #fff;
+}
+
+.team-view-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #ffd700;
+  text-align: center;
+}
+
+.team-level-section {
+  margin-bottom: 30px;
+}
+
+.team-level-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #ffd700;
+}
+
+.member-card {
+  background-color: #1e1e1e;
+  padding: 12px 16px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.member-name {
+  font-weight: 500;
+}
+
+.member-earnings {
+  color: #ffd700;
+  font-weight: bold;
+}
