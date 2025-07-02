@@ -31,3 +31,6 @@ const AuthProvider = ({ children }) => {
 };
 
 export default AuthProvider;
+
+// ✅ This is the missing piece causing the build error
+export const useAuth = () => React.useContext(AuthContext);
