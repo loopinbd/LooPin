@@ -1,21 +1,40 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import PageWrapper from "../components/PageWrapper";
-// import ReferralLink from "../components/ReferralLink";
-// import TeamCommission from "../components/TeamCommission";
+import ReferralLink from "../components/ReferralLink";
+import TeamCommission from "../components/TeamCommission";
+import { AuthContext } from "../context/AuthContext";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase";
 import "../styles/referral.css";
 
 const Referral = () => {
+  const { currentUser } = useContext(AuthContext);
   const [isActive, setIsActive] = useState(null);
+  const [commissionData, setCommissionData] = useState([]);
 
   useEffect(() => {
-    const userActive = true;
-    setIsActive(userActive);
-  }, []);
+    const fetchData = async () => {
+      if (!currentUser) return;
+      const userDoc = await getDoc(doc(db, "users", currentUser.uid));
+      const userData = userDoc.data();
+      setIsActive(userData?.isActive || false);
+
+      const teamData = userData?.teamLevels || {}; // e.g., {1: {earned: 10, teamCount: 3}, 2: {...}}
+      const levels = Object.entries(teamData).map(([level, data]) => ({
+        level: parseInt(level),
+        earned: data.earned || 0,
+        teamCount: data.teamCount || 0,
+      }));
+      setCommissionData(levels);
+    };
+
+    fetchData();
+  }, [currentUser]);
 
   if (isActive === null) {
     return (
       <PageWrapper>
-        <div style={{ padding: "50px", color: "#fff", textAlign: "center" }}>
+        <div className="referral-page" style={{ color: "#fff", textAlign: "center", padding: "40px" }}>
           <h2>Loading...</h2>
         </div>
       </PageWrapper>
@@ -27,16 +46,14 @@ const Referral = () => {
       <div className="referral-page" style={{ color: "#fff", padding: "40px" }}>
         {isActive ? (
           <>
-            <h2>Your Referral Link</h2>
-            <p>Link: https://loopin.vercel.app/?ref=yourcode</p>
-
-            <h3>Team Commission</h3>
-            <p>Level 1: $10<br />Level 2: $5</p>
+            <ReferralLink userId={currentUser.uid} isActive={isActive} />
+            <h3 style={{ marginTop: "30px", marginBottom: "10px" }}>Your Team Commission</h3>
+            <TeamCommission levels={commissionData} />
           </>
         ) : (
           <div>
             <h2>Referral System Locked</h2>
-            <p>Activate your account to get referral link.</p>
+            <p>Activate your account to get your referral link and team commission data.</p>
           </div>
         )}
       </div>
