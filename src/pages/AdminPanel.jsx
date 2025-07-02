@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import PageWrapper from "../components/PageWrapper";
 import ActivationStatus from "../components/ActivationStatus";
-import WithdrawList from "../components/WithdrawList";
+import WithdrawStatus from "../components/WithdrawStatus";
 import UserMessages from "../components/UserMessages";
 import UserList from "../components/UserList";
 import { db } from "../firebase";
