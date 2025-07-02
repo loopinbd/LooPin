@@ -1,31 +1,41 @@
 .activation-page {
-  padding: 30px;
+  padding: 2rem;
   color: white;
   background-color: black;
   min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .activation-box {
   background-color: #111;
   border: 1px solid gold;
-  padding: 25px;
-  border-radius: 12px;
+  padding: 2rem;
+  border-radius: 16px;
   max-width: 500px;
   margin: 0 auto;
   text-align: center;
   box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 .activation-box h2 {
   color: gold;
-  margin-bottom: 10px;
+  font-size: 22px;
+  margin-bottom: 0.75rem;
+}
+
+.activation-box p {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 1rem;
 }
 
 .method-toggle {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  margin: 1.5rem 0;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .method-toggle button {
@@ -36,30 +46,33 @@
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s;
+  font-size: 14px;
 }
 
 .method-toggle button.active {
   background: gold;
   color: black;
+  font-weight: bold;
 }
 
 .payment-section {
-  margin-top: 10px;
+  margin-top: 1rem;
 }
 
 .usdt-address {
   background-color: #222;
   color: gold;
   padding: 10px;
-  border-radius: 6px;
-  margin-top: 10px;
+  border-radius: 8px;
+  margin-top: 1rem;
   font-weight: bold;
+  word-break: break-word;
 }
 
 .success {
-  border: 1px solid green;
+  border: 2px solid green;
 }
 
 .error {
-  border: 1px solid red;
+  border: 2px solid red;
 }
