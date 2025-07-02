@@ -14,13 +14,13 @@
 
 .login-box {
   background-color: rgba(0, 0, 0, 0.85);
-  border: 1px solid goldenrod;
-  box-shadow: 0 0 15px rgba(218, 165, 32, 0.5);
-  padding: 2rem 2.5rem;
-  border-radius: 12px;
-  max-width: 400px;
+  border: 2px solid goldenrod;
+  box-shadow: 0 0 18px rgba(218, 165, 32, 0.45);
+  padding: 2.5rem;
+  border-radius: 14px;
+  max-width: 420px;
   width: 100%;
-  animation: fadeIn 1s ease-in-out;
+  animation: fadeIn 0.8s ease-in-out;
   text-align: center;
 }
 
@@ -38,19 +38,20 @@
 .login-title {
   font-size: 28px;
   color: goldenrod;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.3rem;
 }
 
 .login-tagline {
   font-size: 13px;
-  color: #ddd;
-  margin-bottom: 1.5rem;
+  color: #ccc;
+  margin-bottom: 1.8rem;
 }
 
 .error-message {
   color: #ff4c4c;
   font-size: 14px;
-  margin: 0.5rem 0;
+  margin: 0.75rem 0;
+  text-align: center;
 }
 
 .register-redirect {
@@ -65,7 +66,7 @@
   font-weight: bold;
   margin-left: 4px;
   text-decoration: underline;
-  transition: color 0.2s;
+  transition: color 0.2s ease-in-out;
 }
 
 .register-link:hover {
