@@ -1,50 +1,80 @@
 import React, { useState, useEffect } from "react";
 import PageWrapper from "../components/PageWrapper";
 import Button from "../components/Button";
+import { useAuth } from "../context/AuthContext";
+import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { db } from "../firebase";
 import "../styles/activation.css";
 
 const Activation = () => {
-  const [status, setStatus] = useState("not_paid"); // pending, approved, rejected
+  const { user } = useAuth();
+  const [status, setStatus] = useState(null); // null | not_paid | pending | approved | rejected
   const [method, setMethod] = useState("usd");
 
   useEffect(() => {
-    // This useEffect will simulate admin approval
-    if (status === "pending") {
-      const timer = setTimeout(() => {
-        setStatus("approved"); // simulate success
-      }, 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [status]);
+    if (user) {
+      const checkActivationStatus = async () => {
+        const docRef = doc(db, "activations", user.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          setStatus(data.status || "not_paid");
+        } else {
+          setStatus("not_paid");
+        }
+      };
 
-  const handlePayment = () => {
+      checkActivationStatus();
+    }
+  }, [user]);
+
+  const handlePayment = async () => {
+    if (!user) return;
     setStatus("pending");
-    // In real case, redirect to RupantorPay or show USDT address
+
+    const payload = {
+      userId: user.uid,
+      email: user.email,
+      method,
+      status: "pending",
+      requestedAt: new Date(),
+    };
+
+    await setDoc(doc(db, "activations", user.uid), payload);
   };
 
-  const handleRePay = () => {
+  const handleRePay = async () => {
+    if (!user) return;
     setStatus("not_paid");
+
+    await updateDoc(doc(db, "activations", user.uid), {
+      status: "not_paid",
+      method,
+      requestedAt: new Date(),
+    });
   };
 
   return (
     <PageWrapper>
       <div className="activation-page">
+        {!status && (
+          <div className="activation-box">
+            <h2>Checking status...</h2>
+          </div>
+        )}
+
         {status === "not_paid" && (
           <div className="activation-box">
             <h2>Activate Your Account</h2>
-            <p>Pay <strong>$12</strong> to activate your account and unlock income features.</p>
+            <p>
+              Pay <strong>$12</strong> to activate your account and unlock income features.
+            </p>
 
             <div className="method-toggle">
-              <button
-                className={method === "usd" ? "active" : ""}
-                onClick={() => setMethod("usd")}
-              >
+              <button className={method === "usd" ? "active" : ""} onClick={() => setMethod("usd")}>
                 Pay in USD
               </button>
-              <button
-                className={method === "usdt" ? "active" : ""}
-                onClick={() => setMethod("usdt")}
-              >
+              <button className={method === "usdt" ? "active" : ""} onClick={() => setMethod("usdt")}>
                 Pay via USDT
               </button>
             </div>
