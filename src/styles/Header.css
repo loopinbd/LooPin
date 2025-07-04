@@ -1,5 +1,3 @@
-/* src/styles/Header.css */
-
 .header-container {
   display: flex;
   align-items: center;
@@ -7,60 +5,6 @@
   background-color: #000000;
   padding: 10px 20px;
   border-bottom: 2px solid gold;
-  /* ❌ REMOVE sticky behavior */
-  /* position: sticky;
-     top: 0; */
-  z-index: 1000;
+  z-index: 10;
   box-shadow: 0 4px 8px rgba(255, 215, 0, 0.2);
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-}
-
-.logo {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-  margin-right: 10px;
-}
-
-.app-name {
-  font-size: 22px;
-  font-weight: bold;
-  color: gold;
-  text-shadow: 0 0 5px gold;
-}
-
-.tagline {
-  flex: 1;
-  text-align: center;
-  font-size: 14px;
-  color: white;
-  font-style: italic;
-  animation: fadeIn 1s ease-in-out;
-}
-
-.menu-icon {
-  font-size: 28px;
-  color: white;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-.menu-icon:hover {
-  color: gold;
-}
-
-/* Animation for tagline */
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-5px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
