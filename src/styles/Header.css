@@ -4,13 +4,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #000000;
+  background-color: #000;
   padding: 10px 20px;
   border-bottom: 2px solid gold;
-  /* ❌ REMOVE sticky behavior */
-  /* position: sticky;
-     top: 0; */
-  z-index: 1000;
   box-shadow: 0 4px 8px rgba(255, 215, 0, 0.2);
 }
 
@@ -53,7 +49,6 @@
   color: gold;
 }
 
-/* Animation for tagline */
 @keyframes fadeIn {
   0% {
     opacity: 0;
