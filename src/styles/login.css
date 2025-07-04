@@ -54,6 +54,28 @@
   text-align: center;
 }
 
+.success-message {
+  color: #4eff91;
+  font-size: 14px;
+  margin: 0.75rem 0;
+  text-align: center;
+}
+
+.forgot-password {
+  font-size: 13px;
+  color: goldenrod;
+  cursor: pointer;
+  text-align: right;
+  margin-top: 8px;
+  margin-bottom: 10px;
+  text-decoration: underline;
+  transition: color 0.2s ease-in-out;
+}
+
+.forgot-password:hover {
+  color: #ffd700;
+}
+
 .register-redirect {
   font-size: 14px;
   margin-top: 1.5rem;
