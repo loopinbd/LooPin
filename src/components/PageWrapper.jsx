@@ -1,16 +1,23 @@
-/* src/styles/PageWrapper.css */
+// src/components/PageWrapper.jsx
+import React from "react";
+import Header from "./Header";
+import Sidebar from "./Sidebar";
+import Footer from "./Footer";
+import "../styles/PageWrapper.css";
 
-.page-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
+const PageWrapper = ({ children }) => {
+  const [sidebarOpen, setSidebarOpen] = React.useState(false);
 
-.page-content {
-  flex: 1;
-  padding: 1rem;
-}
+  return (
+    <div className="page-wrapper">
+      {sidebarOpen && (
+        <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      )}
+      <Header onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
+      <main className="page-content">{children}</main>
+      <Footer />
+    </div>
+  );
+};
 
-.layout-body {
-  display: block;
-}
+export default PageWrapper;
