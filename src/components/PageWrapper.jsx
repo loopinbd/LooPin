@@ -1,4 +1,3 @@
-// src/components/PageWrapper.jsx
 import React from "react";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
@@ -10,12 +9,16 @@ const PageWrapper = ({ children }) => {
 
   return (
     <div className="page-wrapper">
-      {sidebarOpen && (
-        <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-      )}
-      <Header onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
-      <main className="page-content">{children}</main>
-      <Footer />
+      <div className="layout-body">
+        {sidebarOpen && (
+          <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+        )}
+        <div className="main-content">
+          <Header onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
+          <main className="page-content">{children}</main>
+          <Footer />
+        </div>
+      </div>
     </div>
   );
 };
