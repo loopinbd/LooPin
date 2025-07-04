@@ -1,4 +1,3 @@
-/* Full page layout */
 .page-wrapper {
   display: flex;
   flex-direction: column;
@@ -7,7 +6,6 @@
   color: white;
 }
 
-/* Layout for sidebar + content */
 .layout-body {
   display: flex;
   flex: 1;
@@ -18,11 +16,19 @@
 .sidebar {
   width: 240px;
   background-color: #111;
-  min-height: calc(100vh - 60px); /* adjust if Header has different height */
+  min-height: 100vh;
   border-right: 2px solid goldenrod;
 }
 
-/* Main page content */
+/* Main content beside sidebar */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Page content below header */
 .page-content {
   flex: 1;
   padding: 20px;
