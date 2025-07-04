@@ -1,9 +1,8 @@
-// AdminPanel.jsx
 import React, { useState, useEffect } from "react";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import PageWrapper from "../components/PageWrapper";
-import ActivationStatus from "../components/ActivationStatus";
-import WithdrawStatus from "../components/WithdrawStatus";
+import ActivationList from "../components/ActivationList";
+import WithdrawList from "../components/WithdrawList";
 import UserMessages from "../components/UserMessages";
 import UserList from "../components/UserList";
 import { db } from "../firebase";
@@ -15,23 +14,33 @@ const AdminPanel = () => {
 
   useEffect(() => {
     const fetchSettings = async () => {
-      const settingsRef = doc(db, "admin", "settings");
-      const settingsSnap = await getDoc(settingsRef);
-      if (settingsSnap.exists()) {
-        const { dollarRate, walletAddress } = settingsSnap.data();
-        setDollarRate(dollarRate);
-        setWalletAddress(walletAddress);
+      try {
+        const settingsRef = doc(db, "admin", "settings");
+        const settingsSnap = await getDoc(settingsRef);
+        if (settingsSnap.exists()) {
+          const { dollarRate, walletAddress } = settingsSnap.data();
+          setDollarRate(dollarRate || 110);
+          setWalletAddress(walletAddress || "");
+        }
+      } catch (err) {
+        console.error("Failed to fetch admin settings:", err);
       }
     };
+
     fetchSettings();
   }, []);
 
   const handleSaveSettings = async () => {
-    await setDoc(doc(db, "admin", "settings"), {
-      dollarRate: Number(dollarRate),
-      walletAddress,
-    });
-    alert("Settings updated!");
+    try {
+      await setDoc(doc(db, "admin", "settings"), {
+        dollarRate: Number(dollarRate),
+        walletAddress,
+      });
+      alert("Settings updated successfully.");
+    } catch (err) {
+      console.error("Failed to update settings:", err);
+      alert("Error saving settings.");
+    }
   };
 
   return (
