@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #000;
+  background-color: #000000;
   padding: 10px 20px;
   border-bottom: 2px solid gold;
   position: sticky;
@@ -39,9 +39,6 @@
   color: white;
   font-style: italic;
   animation: fadeIn 1s ease-in-out;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .menu-icon {
@@ -64,20 +61,5 @@
   100% {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-/* Optional: Responsive adjustments */
-@media (max-width: 600px) {
-  .app-name {
-    font-size: 18px;
-  }
-
-  .tagline {
-    display: none;
-  }
-
-  .menu-icon {
-    font-size: 24px;
   }
 }
