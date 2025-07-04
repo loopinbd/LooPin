@@ -7,8 +7,9 @@
   background-color: #000000;
   padding: 10px 20px;
   border-bottom: 2px solid gold;
-  position: sticky;
-  top: 0;
+  /* ❌ REMOVE sticky behavior */
+  /* position: sticky;
+     top: 0; */
   z-index: 1000;
   box-shadow: 0 4px 8px rgba(255, 215, 0, 0.2);
 }
