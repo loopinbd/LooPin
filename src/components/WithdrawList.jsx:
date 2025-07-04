@@ -5,12 +5,22 @@ import { db } from "../firebase";
 
 const WithdrawList = () => {
   const [requests, setRequests] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchRequests = async () => {
-      const querySnapshot = await getDocs(collection(db, "withdrawRequests"));
-      const data = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-      setRequests(data);
+      try {
+        const querySnapshot = await getDocs(collection(db, "withdrawRequests"));
+        const data = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setRequests(data);
+      } catch (error) {
+        console.error("Error fetching withdraw requests:", error);
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchRequests();
@@ -32,21 +42,29 @@ const WithdrawList = () => {
 
   return (
     <div className="admin-list">
-      {requests.length === 0 ? (
+      {loading ? (
+        <p>Loading withdraw requests...</p>
+      ) : requests.length === 0 ? (
         <p>No withdraw requests found.</p>
       ) : (
         <ul>
           {requests.map((req) => (
             <li key={req.id} className="admin-item">
-              <strong>{req.email}</strong> requested <b>${req.amount}</b> - Status:{" "}
+              <strong>{req.email}</strong> requested <b>${req.amount}</b> – Status:{" "}
               <span className={req.status}>{req.status}</span>
               <div className="admin-actions">
                 {req.status === "pending" && (
                   <>
-                    <button onClick={() => handleApprove(req.id)} className="approve-btn">
+                    <button
+                      onClick={() => handleApprove(req.id)}
+                      className="approve-btn"
+                    >
                       Approve
                     </button>
-                    <button onClick={() => handleReject(req.id)} className="reject-btn">
+                    <button
+                      onClick={() => handleReject(req.id)}
+                      className="reject-btn"
+                    >
                       Reject
                     </button>
                   </>
