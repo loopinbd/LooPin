@@ -1,6 +1,4 @@
 .page-wrapper {
-  display: flex;
-  flex-direction: column;
   min-height: 100vh;
   background-color: #000;
   color: white;
@@ -8,29 +6,28 @@
 
 .layout-body {
   display: flex;
-  flex: 1;
+  flex-direction: row;
   width: 100%;
+  min-height: 100vh;
 }
 
-/* Sidebar styling */
 .sidebar {
   width: 240px;
   background-color: #111;
-  min-height: 100vh;
   border-right: 2px solid goldenrod;
+  min-height: 100vh;
 }
 
-/* Main content beside sidebar */
-.main-content {
-  flex: 1;
+.main-body {
   display: flex;
   flex-direction: column;
+  flex: 1;
   min-height: 100vh;
+  background-color: #000;
 }
 
-/* Page content below header */
 .page-content {
   flex: 1;
   padding: 20px;
-  overflow-x: hidden;
+  overflow-y: auto;
 }
