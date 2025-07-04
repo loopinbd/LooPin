@@ -6,6 +6,20 @@
   flex-direction: column;
 }
 
+/* This wraps the sidebar and page content side by side */
+.layout-body {
+  display: flex;
+  flex: 1;
+}
+
+/* Sidebar styling (adjust class name if needed) */
+.sidebar {
+  width: 240px;
+  min-height: 100%;
+  background-color: #111;
+}
+
+/* Page content styling */
 .page-content {
   flex: 1;
   padding: 20px;
