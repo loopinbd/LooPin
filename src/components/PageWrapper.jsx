@@ -10,8 +10,10 @@ const PageWrapper = ({ children }) => {
   return (
     <div className="page-wrapper">
       <Header onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
-      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-      <main className="page-content">{children}</main>
+      <div className="layout-body">
+        <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+        <main className="page-content">{children}</main>
+      </div>
       <Footer />
     </div>
   );
