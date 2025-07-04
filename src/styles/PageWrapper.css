@@ -1,26 +1,30 @@
+/* Full page layout */
 .page-wrapper {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   background-color: #000;
   color: white;
-  display: flex;
-  flex-direction: column;
 }
 
-/* This wraps the sidebar and page content side by side */
+/* Layout for sidebar + content */
 .layout-body {
   display: flex;
   flex: 1;
+  width: 100%;
 }
 
-/* Sidebar styling (adjust class name if needed) */
+/* Sidebar styling */
 .sidebar {
   width: 240px;
-  min-height: 100%;
   background-color: #111;
+  min-height: calc(100vh - 60px); /* adjust if Header has different height */
+  border-right: 2px solid goldenrod;
 }
 
-/* Page content styling */
+/* Main page content */
 .page-content {
   flex: 1;
   padding: 20px;
+  overflow-x: hidden;
 }
