@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../firebase";
 import InputField from "../components/InputField";
 import Button from "../components/Button";
@@ -40,7 +40,7 @@ const Login = () => {
       }
 
       localStorage.setItem("token", user.accessToken);
-      localStorage.setItem("email", user.email); // Optional
+      localStorage.setItem("email", user.email);
       localStorage.setItem("uid", user.uid);
 
       if (user.email === "loopinbd@gmail.com") {
@@ -64,11 +64,25 @@ const Login = () => {
     }
   };
 
+  const handleForgotPassword = () => {
+    const userEmail = prompt("Enter your email to reset password:");
+    if (!userEmail) return;
+
+    sendPasswordResetEmail(auth, userEmail)
+      .then(() => {
+        alert("Password reset email sent. Check your inbox.");
+      })
+      .catch((error) => {
+        console.error("Reset error:", error.message);
+        alert("Failed to send reset email. Try again.");
+      });
+  };
+
   return (
     <div className="login-page">
       <div className="login-box">
         <h1 className="login-title">LooPin</h1>
-        <p className="login-tagline">Unlock Passive income Power by Blockchain</p>
+        <p className="login-tagline">Unlock Passive Income Power by Blockchain</p>
 
         <form onSubmit={handleSubmit}>
           <InputField
@@ -95,6 +109,12 @@ const Login = () => {
             disabled={loading}
           />
 
+          {/* Forgot password */}
+          <p className="forgot-password" onClick={handleForgotPassword}>
+            Forgot Password?
+          </p>
+
+          {/* Register link */}
           <p className="register-redirect">
             Not registered yet?{" "}
             <span onClick={() => navigate("/register")} className="register-link">
