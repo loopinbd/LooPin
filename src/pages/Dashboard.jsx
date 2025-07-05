@@ -13,6 +13,7 @@ const Dashboard = () => {
   const [balance, setBalance] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [teamLevels, setTeamLevels] = useState([]);
+  const [selectedTimeFrame, setSelectedTimeFrame] = useState("all"); // new
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -33,6 +34,7 @@ const Dashboard = () => {
               level: levelKey,
               teamCount: levelData.count || 0,
               earned: levelData.earned || 0,
+              details: levelData.details || [], // will use in TeamCommission
             });
           }
         }
@@ -52,8 +54,23 @@ const Dashboard = () => {
         </section>
 
         <section className="team-commission-section">
-          <h3 className="section-heading">Team Commission</h3>
-          <TeamCommission levels={teamLevels} />
+          <div className="team-header">
+            <h3 className="section-heading">Team Commission</h3>
+
+            {/* Time Frame Selector */}
+            <select
+              className="time-frame-selector"
+              value={selectedTimeFrame}
+              onChange={(e) => setSelectedTimeFrame(e.target.value)}
+            >
+              <option value="all">All Time</option>
+              <option value="daily">Last 24 Hours</option>
+              <option value="weekly">Last 7 Days</option>
+              <option value="monthly">Last 30 Days</option>
+            </select>
+          </div>
+
+          <TeamCommission levels={teamLevels} timeFrame={selectedTimeFrame} />
         </section>
 
         <section className="referral-section">
