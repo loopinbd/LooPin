@@ -9,6 +9,7 @@ const Sidebar = ({ isOpen, onClose }) => {
   const location = useLocation();
 
   const menuItems = [
+    { name: " Dashboard", path: "/dashboard" },
     { name: "Activation", path: "/activation" },
     { name: "Withdraw", path: "/withdraw" },
     { name: "Referral", path: "/referral" },
