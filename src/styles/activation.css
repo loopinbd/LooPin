@@ -1,9 +1,12 @@
 .activation-page {
   padding: 2rem;
+  background-color: #000;
   color: white;
-  background-color: black;
   min-height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .activation-box {
@@ -12,67 +15,63 @@
   padding: 2rem;
   border-radius: 16px;
   max-width: 500px;
-  margin: 0 auto;
+  width: 100%;
   text-align: center;
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+  box-shadow: 0 0 18px rgba(255, 215, 0, 0.15);
   transition: all 0.3s ease;
 }
 
-.activation-box h2 {
+.activation-box h2,
+.activation-box h3 {
   color: gold;
   font-size: 22px;
   margin-bottom: 0.75rem;
 }
 
 .activation-box p {
-  font-size: 14px;
+  font-size: 15px;
   color: #ccc;
   margin-bottom: 1rem;
+  line-height: 1.6;
 }
 
-.method-toggle {
-  display: flex;
-  justify-content: center;
-  margin: 1.5rem 0;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.method-toggle button {
-  background: #222;
-  color: white;
-  border: 1px solid gold;
-  padding: 8px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s;
-  font-size: 14px;
-}
-
-.method-toggle button.active {
-  background: gold;
+.retry-btn {
+  background-color: gold;
   color: black;
   font-weight: bold;
-}
-
-.payment-section {
-  margin-top: 1rem;
-}
-
-.usdt-address {
-  background-color: #222;
-  color: gold;
-  padding: 10px;
+  border: none;
+  padding: 10px 18px;
   border-radius: 8px;
-  margin-top: 1rem;
-  font-weight: bold;
-  word-break: break-word;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
 }
 
-.success {
+.retry-btn:hover {
+  background-color: #f2c200;
+}
+
+/* Activation status variations */
+.activation-box.pending {
+  border: 2px solid orange;
+}
+
+.activation-box.approved {
   border: 2px solid green;
 }
 
-.error {
+.activation-box.rejected {
   border: 2px solid red;
+}
+
+.activation-box.unknown {
+  border: 2px solid gray;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .activation-box {
+    padding: 1.2rem;
+    font-size: 14px;
+  }
 }
