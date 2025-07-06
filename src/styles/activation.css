@@ -88,3 +88,23 @@
     font-size: 14px;
   }
 }
+
+/* --- Pay Button Styling Added --- */
+.pay-btn {
+  background-color: #bfa14a; /* golden color */
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(191, 161, 74, 0.5);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 1rem;
+}
+
+.pay-btn:hover {
+  background-color: #a3863a; /* darker golden */
+  box-shadow: 0 6px 16px rgba(163, 134, 58, 0.7);
+}
