@@ -1,24 +1,20 @@
 .dashboard-container {
+.dashboard-container {
   display: flex;
   flex-direction: column;
-  gap: 30px;
   padding: 20px;
-  background-color: black;
-  color: white;
-  min-height: 100vh;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .balance-section,
 .team-commission-section,
 .referral-section {
-  background-color: #111;
-  border: 1px solid gold;
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 6px 12px rgba(255, 215, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  margin-bottom: 20px;
 }
+
 
 .balance-section:hover,
 .team-commission-section:hover,
