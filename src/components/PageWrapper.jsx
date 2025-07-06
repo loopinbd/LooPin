@@ -9,7 +9,7 @@ const PageWrapper = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
 
   return (
-    <div className="page-wrapper">
+    <div className="page-wrapper full-width">
       <div className="layout-body">
         {sidebarOpen && (
           <div className="sidebar-container">
