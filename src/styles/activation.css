@@ -8,6 +8,19 @@
   align-items: center;
   justify-content: center;
 }
+/* Add to your activation.css */
+.activation-box.loading {
+  background-color: #111;
+  color: gold;
+  text-align: center;
+  font-size: 18px;
+  padding: 2rem;
+  border: 2px dashed gold;
+  border-radius: 16px;
+  max-width: 500px;
+  margin: 100px auto;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+}
 
 .activation-box {
   background-color: #111;
