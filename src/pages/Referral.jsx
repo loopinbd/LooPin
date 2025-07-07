@@ -14,13 +14,25 @@ const Referral = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (!currentUser) return;
+      console.log("🔁 fetchData triggered");
+
+      if (!currentUser) {
+        console.log("❌ currentUser is null");
+        return;
+      }
+
+      console.log("✅ currentUser UID:", currentUser.uid);
+
       const userRef = doc(db, "users", currentUser.uid);
       const userDoc = await getDoc(userRef);
 
       if (userDoc.exists()) {
         const userData = userDoc.data();
-        setIsActive(userData?.isActive || false);
+        console.log("📄 User data from Firestore:", userData);
+
+        // ✅ Support both isActive or activationStatus === 'approved'
+        const activeStatus = userData?.isActive ?? (userData?.activationStatus === "approved");
+        setIsActive(activeStatus);
 
         const teamData = userData?.teamLevels || {};
         const levels = Object.entries(teamData).map(([level, data]) => ({
@@ -30,12 +42,15 @@ const Referral = () => {
         }));
         setCommissionData(levels);
       } else {
+        console.log("❌ User doc not found in Firestore");
         setIsActive(false);
       }
     };
 
     fetchData();
   }, [currentUser]);
+
+  console.log("🔥 isActive =", isActive);
 
   if (isActive === null) {
     return (
