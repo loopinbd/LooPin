@@ -7,7 +7,8 @@ import PageWrapper from "../components/PageWrapper";
 import "../styles/activation.css";
 
 const Activation = () => {
-  const { user } = useAuth();
+  const { currentUser } = useContext(AuthContext);
+
   const [loading, setLoading] = useState(true);
   const [status, setStatus] = useState(null); // 'pending', 'approved', 'rejected', null
   const [totalEarning, setTotalEarning] = useState(0);
