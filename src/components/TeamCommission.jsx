@@ -13,12 +13,10 @@ const TeamCommission = ({ levels = [] }) => {
   const [filteredLevels, setFilteredLevels] = useState([]);
 
   useEffect(() => {
-    // For now, no real filtering - just set levels as is.
-    // You can extend this later based on timeframe and your data
+    // For now no real timeframe filtering, just set levels as is.
     setFilteredLevels(levels);
   }, [levels, timeframe]);
 
-  // Prepare levels 1-3 with default 0 values
   const levelData = [1, 2, 3].map((lvl) => {
     const found = filteredLevels.find((l) => Number(l.level) === lvl);
     return {
@@ -28,21 +26,11 @@ const TeamCommission = ({ levels = [] }) => {
     };
   });
 
-  // Calculate totals
   const totalTeam = levelData.reduce((sum, l) => sum + l.teamCount, 0);
   const totalEarned = levelData.reduce((sum, l) => sum + l.earned, 0);
 
-  if (levels.length === 0) {
-    return (
-      <div className="no-team-data">
-        <p>No team data available.</p>
-      </div>
-    );
-  }
-
   return (
     <div className="team-commission-wrapper">
-      {/* Timeframe selector */}
       <div className="timeframe-select">
         <label htmlFor="timeframe">Timeframe:</label>
         <select
@@ -58,7 +46,6 @@ const TeamCommission = ({ levels = [] }) => {
         </select>
       </div>
 
-      {/* Levels container */}
       <div className="team-commission-container">
         {levelData.map(({ level, teamCount, earned }) => (
           <div key={level} className={`commission-card level-${level}`}>
@@ -69,7 +56,6 @@ const TeamCommission = ({ levels = [] }) => {
         ))}
       </div>
 
-      {/* Total box */}
       <div className="total-box">
         <h4>Total</h4>
         <div className="team-count">{totalTeam} Members</div>
