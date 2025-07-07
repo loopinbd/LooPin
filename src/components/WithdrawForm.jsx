@@ -1,12 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/WithdrawForm.css";
 
-const WithdrawForm = ({ balance = 0, onSubmit }) => {
+const WithdrawForm = ({
+  balance = 0,
+  onSubmit,
+  loading = false,
+  submitError = "",
+  submitSuccess = "",
+  clearMessages = () => {},
+}) => {
   const [method, setMethod] = useState("");
   const [wallet, setWallet] = useState("");
   const [amount, setAmount] = useState("");
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+
+  useEffect(() => {
+    // Clear internal error when external messages change
+    setError("");
+  }, [submitError, submitSuccess]);
 
   const validate = () => {
     const amt = parseFloat(amount);
@@ -23,17 +34,20 @@ const WithdrawForm = ({ balance = 0, onSubmit }) => {
   };
 
   const handleWithdraw = () => {
+    clearMessages();
+
     const err = validate();
     if (err) {
       setError(err);
-      setSuccess("");
     } else {
       setError("");
-      setSuccess("Withdraw request submitted successfully.");
       onSubmit({ method, wallet, amount: parseFloat(amount) });
-      setMethod("");
-      setWallet("");
-      setAmount("");
+      // Reset fields only if not loading
+      if (!loading) {
+        setMethod("");
+        setWallet("");
+        setAmount("");
+      }
     }
   };
 
@@ -64,6 +78,7 @@ const WithdrawForm = ({ balance = 0, onSubmit }) => {
         value={wallet}
         onChange={(e) => setWallet(e.target.value)}
         className="withdraw-input"
+        onFocus={clearMessages}
       />
 
       <input
@@ -74,23 +89,25 @@ const WithdrawForm = ({ balance = 0, onSubmit }) => {
         className="withdraw-input"
         min="0"
         step="0.01"
+        onFocus={clearMessages}
       />
 
       <div className="balance-note">Your Balance: ${balance.toFixed(2)}</div>
       <div className="min-note">Minimum withdrawal is $25</div>
 
       {error && <div className="error-text">{error}</div>}
-      {success && <div className="success-text">{success}</div>}
+      {submitError && <div className="error-text">{submitError}</div>}
+      {submitSuccess && <div className="success-text">{submitSuccess}</div>}
 
       <button
         className="withdraw-btn"
         onClick={handleWithdraw}
-        disabled={!method || !wallet || !amount}
+        disabled={loading || !method || !wallet || !amount}
       >
-        Request Withdraw
+        {loading ? "Processing..." : "Request Withdraw"}
       </button>
     </div>
   );
 };
 
-export default WithdrawForm;
+export default WithdrawForm; eta kon file e peast korbo
