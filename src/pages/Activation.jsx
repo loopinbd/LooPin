@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/AuthContext"; // ✅ using your custom hook
 import { doc, getDoc, setDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase";
 import ActivationStatus from "../components/ActivationStatus";
@@ -7,15 +7,14 @@ import PageWrapper from "../components/PageWrapper";
 import "../styles/activation.css";
 
 const Activation = () => {
-  const { currentUser } = useContext(AuthContext);
-
+  const { currentUser } = useAuth(); // ✅ use currentUser from context
   const [loading, setLoading] = useState(true);
   const [status, setStatus] = useState(null); // 'pending', 'approved', 'rejected', null
   const [totalEarning, setTotalEarning] = useState(0);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!user) {
+    if (!currentUser) {
       // User not logged in yet
       setStatus(null);
       setLoading(false);
@@ -26,14 +25,14 @@ const Activation = () => {
       setLoading(true);
       setError(null);
       try {
-        const userRef = doc(db, "users", user.uid);
+        const userRef = doc(db, "users", currentUser.uid);
         const userSnap = await getDoc(userRef);
 
         if (userSnap.exists()) {
           const data = userSnap.data();
           setTotalEarning(data.totalEarning || 0);
 
-          if (data.isActive) {
+          if (data.isActive === true) {
             setStatus("approved");
           } else if (data.activationStatus === "pending") {
             setStatus("pending");
@@ -43,7 +42,6 @@ const Activation = () => {
             setStatus(null);
           }
         } else {
-          // user doc doesn't exist
           setStatus(null);
         }
       } catch (err) {
@@ -55,18 +53,17 @@ const Activation = () => {
     };
 
     fetchStatus();
-  }, [user]);
+  }, [currentUser]);
 
   const handlePayment = async () => {
-    if (!user) {
+    if (!currentUser) {
       alert("Please login first.");
       return;
     }
 
     try {
-      // Mark activation as pending in Firestore
       await setDoc(
-        doc(db, "users", user.uid),
+        doc(db, "users", currentUser.uid),
         {
           activationStatus: "pending",
           activationRequestedAt: serverTimestamp(),
@@ -74,12 +71,10 @@ const Activation = () => {
         { merge: true }
       );
 
-      // Open RupantorPay payment link in new tab
       const paymentLink =
         "https://rupantorpay.com/paymentlink/eyJ1aWQiOjEyMzksImJyYW5kX2lkIjoiNjgzIiwiY3VzdG9tZXJfYW1vdW50IjoiMTUxMiJ9";
       window.open(paymentLink, "_blank");
 
-      // After payment, user needs to wait admin approval
       setStatus("pending");
     } catch (err) {
       console.error("Payment initiation failed:", err);
@@ -120,8 +115,7 @@ const Activation = () => {
       <div className="activation-box action">
         <h2>Activate Your Account</h2>
         <p>
-          To activate your account, please deposit <strong>$12</strong> via
-          RupantorPay.
+          To activate your account, please deposit <strong>$12</strong> via RupantorPay.
         </p>
         <button onClick={handlePayment} className="pay-btn">
           Activate with $12 Payment
