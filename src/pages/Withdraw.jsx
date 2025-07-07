@@ -10,7 +10,6 @@ import {
   addDoc,
   query,
   where,
-  getDocs,
   onSnapshot,
   Timestamp,
   doc,
@@ -21,8 +20,10 @@ const Withdraw = () => {
   const { currentUser } = useContext(AuthContext);
   const [balance, setBalance] = useState(0);
   const [history, setHistory] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [submitSuccess, setSubmitSuccess] = useState("");
 
-  // ✅ Fetch current balance from Firestore
   useEffect(() => {
     if (!currentUser) return;
 
@@ -37,7 +38,6 @@ const Withdraw = () => {
     fetchBalance();
   }, [currentUser]);
 
-  // ✅ Fetch withdraw history from Firestore
   useEffect(() => {
     if (!currentUser) return;
 
@@ -47,16 +47,25 @@ const Withdraw = () => {
     );
 
     const unsub = onSnapshot(q, (snapshot) => {
-      const data = snapshot.docs.map((doc) => doc.data());
+      const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       setHistory(data);
     });
 
     return () => unsub();
   }, [currentUser]);
 
-  // ✅ Submit withdraw request
   const handleWithdraw = async ({ method, wallet, amount }) => {
-    if (!currentUser || amount > balance) return;
+    if (!currentUser) return;
+
+    setLoading(true);
+    setSubmitError("");
+    setSubmitSuccess("");
+
+    if (amount > balance) {
+      setSubmitError("Not enough balance to withdraw.");
+      setLoading(false);
+      return;
+    }
 
     const withdrawData = {
       uid: currentUser.uid,
@@ -67,8 +76,15 @@ const Withdraw = () => {
       requestedAt: Timestamp.now(),
     };
 
-    await addDoc(collection(db, "withdraws"), withdrawData);
-    alert("Withdraw request submitted. Wait for admin approval.");
+    try {
+      await addDoc(collection(db, "withdraws"), withdrawData);
+      setSubmitSuccess("Withdraw request submitted. Wait for admin approval.");
+    } catch (error) {
+      setSubmitError("Failed to submit withdraw request. Please try again.");
+      console.error("Withdraw error:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -76,7 +92,17 @@ const Withdraw = () => {
       <div className="withdraw-page">
         <h2 className="withdraw-heading">Withdraw Funds</h2>
 
-        <WithdrawForm balance={balance} onSubmit={handleWithdraw} />
+        <WithdrawForm
+          balance={balance}
+          onSubmit={handleWithdraw}
+          loading={loading}
+          submitError={submitError}
+          submitSuccess={submitSuccess}
+          clearMessages={() => {
+            setSubmitError("");
+            setSubmitSuccess("");
+          }}
+        />
 
         <section className="withdraw-history-section">
           <WithdrawHistory history={history} />
