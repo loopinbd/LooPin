@@ -8,6 +8,13 @@
   box-shadow: 0 8px 18px rgba(255, 215, 0, 0.12);
   color: white;
 }
+.method-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  margin-right: 8px;
+}
+
 
 .form-title {
   font-size: 22px;
