@@ -57,12 +57,25 @@ const Referral = () => {
     fetchData();
   }, [currentUser]);
 
-  if (isActive === null) {
+  if (isActive === null || currentUser === null) {
     return (
       <PageWrapper>
-        <div className="referral-page" style={{ color: "#fff", padding: "40px" }}>
+        <div className="referral-page" style={{ color: "#fff", textAlign: "center", padding: "40px" }}>
           <h2>Loading...</h2>
-          <pre style={{ color: "#ccc", background: "#111", padding: "15px", fontSize: "14px", marginTop: "20px" }}>
+          <pre
+            style={{
+              marginTop: "20px",
+              color: "#ccc",
+              background: "#111",
+              padding: "15px",
+              fontSize: "14px",
+              textAlign: "left",
+              maxWidth: "500px",
+              margin: "0 auto",
+              whiteSpace: "pre-wrap",
+              wordBreak: "break-word",
+            }}
+          >
             {debugText}
           </pre>
         </div>
@@ -84,13 +97,6 @@ const Referral = () => {
             <h2>Referral System Locked</h2>
             <p>Activate your account to get your referral link and team commission data.</p>
           </div>
-        )}
-      </div>
-    </PageWrapper>
-  );
-};
-
-export default Referral;
         )}
       </div>
     </PageWrapper>
