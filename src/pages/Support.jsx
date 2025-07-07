@@ -15,9 +15,10 @@ import {
 import { useAuth } from "../context/AuthContext";
 
 const Support = () => {
-  const { user } = useAuth(); // get user info
+  const { user } = useAuth();
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  const [sending, setSending] = useState(false);
 
   useEffect(() => {
     if (!user) return;
@@ -38,19 +39,22 @@ const Support = () => {
 
   const sendMessage = async () => {
     if (!newMessage.trim()) return;
+    if (sending) return;
 
+    setSending(true);
     try {
       await addDoc(collection(db, "supportMessages"), {
         userId: user.uid,
         email: user.email,
-        content: newMessage,
+        content: newMessage.trim(),
         createdAt: serverTimestamp(),
-        reply: "", // initially empty
+        reply: "",
       });
-
       setNewMessage("");
     } catch (err) {
       console.error("Failed to send message", err);
+    } finally {
+      setSending(false);
     }
   };
 
@@ -66,9 +70,19 @@ const Support = () => {
             placeholder="Type your message..."
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+              }
+            }}
           ></textarea>
-          <button className="send-btn" onClick={sendMessage}>
-            Send
+          <button
+            className="send-btn"
+            onClick={sendMessage}
+            disabled={sending || !newMessage.trim()}
+          >
+            {sending ? "Sending..." : "Send"}
           </button>
         </div>
       </div>
