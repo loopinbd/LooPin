@@ -1,67 +1,58 @@
-.team-commission-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
-  margin-top: 30px;
-  padding: 10px;
+.team-commission-wrapper {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.commission-card {
-  background-color: #000;
+.timeframe-select {
+  margin-bottom: 15px;
+  text-align: right;
+  color: white;
+}
+
+.timeframe-select label {
+  margin-right: 8px;
+  font-weight: bold;
+  color: gold;
+}
+
+.timeframe-select select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid gold;
+  background-color: #111;
+  color: gold;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.total-box {
+  margin-top: 25px;
+  max-width: 320px;
+  background-color: #111;
   border: 2px solid gold;
   border-radius: 16px;
   padding: 20px;
-  min-width: 180px;
   text-align: center;
   color: white;
   box-shadow: 0 6px 16px rgba(255, 215, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.commission-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 24px rgba(255, 215, 0, 0.35);
-}
-
-.level-title {
-  font-size: 18px;
+.total-box h4 {
+  font-size: 22px;
   font-weight: bold;
   color: gold;
-  margin-bottom: 10px;
-  text-transform: uppercase;
+  margin-bottom: 12px;
 }
 
-.team-count {
-  font-size: 15px;
+.total-box .team-count {
+  font-size: 20px;
   margin-bottom: 6px;
-  color: #ddd;
 }
 
-.earned-amount {
-  font-size: 22px;
+.total-box .earned-amount {
+  font-size: 24px;
   font-weight: bold;
   color: white;
   text-shadow: 0 0 6px gold;
-}
-
-/* ✅ Responsive design for smaller devices */
-@media (max-width: 500px) {
-  .commission-card {
-    min-width: 140px;
-    padding: 16px;
-  }
-
-  .level-title {
-    font-size: 16px;
-  }
-
-  .team-count,
-  .earned-amount {
-    font-size: 14px;
-  }
-
-  .earned-amount {
-    font-size: 18px;
-  }
 }
