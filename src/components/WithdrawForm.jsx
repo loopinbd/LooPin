@@ -6,6 +6,7 @@ const WithdrawForm = ({ balance = 0, onSubmit }) => {
   const [wallet, setWallet] = useState("");
   const [amount, setAmount] = useState("");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const validate = () => {
     const amt = parseFloat(amount);
@@ -25,9 +26,14 @@ const WithdrawForm = ({ balance = 0, onSubmit }) => {
     const err = validate();
     if (err) {
       setError(err);
+      setSuccess("");
     } else {
       setError("");
+      setSuccess("Withdraw request submitted successfully.");
       onSubmit({ method, wallet, amount: parseFloat(amount) });
+      setMethod("");
+      setWallet("");
+      setAmount("");
     }
   };
 
@@ -43,7 +49,7 @@ const WithdrawForm = ({ balance = 0, onSubmit }) => {
             onClick={() => setMethod(m)}
           >
             <img
-              src={`/icons/${m.toLowerCase()}.png`} // Optional icons path
+              src={`/icons/${m.toLowerCase()}.png`}
               alt={m}
               className="method-icon"
             />
@@ -67,14 +73,20 @@ const WithdrawForm = ({ balance = 0, onSubmit }) => {
         onChange={(e) => setAmount(e.target.value)}
         className="withdraw-input"
         min="0"
+        step="0.01"
       />
 
       <div className="balance-note">Your Balance: ${balance.toFixed(2)}</div>
       <div className="min-note">Minimum withdrawal is $25</div>
 
       {error && <div className="error-text">{error}</div>}
+      {success && <div className="success-text">{success}</div>}
 
-      <button className="withdraw-btn" onClick={handleWithdraw} disabled={!!validate()}>
+      <button
+        className="withdraw-btn"
+        onClick={handleWithdraw}
+        disabled={!method || !wallet || !amount}
+      >
         Request Withdraw
       </button>
     </div>
