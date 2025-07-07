@@ -15,17 +15,23 @@ const Referral = () => {
   useEffect(() => {
     const fetchData = async () => {
       if (!currentUser) return;
-      const userDoc = await getDoc(doc(db, "users", currentUser.uid));
-      const userData = userDoc.data();
-      setIsActive(userData?.isActive || false);
+      const userRef = doc(db, "users", currentUser.uid);
+      const userDoc = await getDoc(userRef);
 
-      const teamData = userData?.teamLevels || {}; // e.g., {1: {earned: 10, teamCount: 3}, 2: {...}}
-      const levels = Object.entries(teamData).map(([level, data]) => ({
-        level: parseInt(level),
-        earned: data.earned || 0,
-        teamCount: data.teamCount || 0,
-      }));
-      setCommissionData(levels);
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+        setIsActive(userData?.isActive || false);
+
+        const teamData = userData?.teamLevels || {};
+        const levels = Object.entries(teamData).map(([level, data]) => ({
+          level: parseInt(level),
+          earned: data.earned || 0,
+          teamCount: data.teamCount || 0,
+        }));
+        setCommissionData(levels);
+      } else {
+        setIsActive(false);
+      }
     };
 
     fetchData();
