@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "../styles/ReferralLink.css";
-import copyToClipboard from "../utils/copyToClipboard"; // ✅ utils import
+import copyToClipboard from "../utils/copyToClipboard";
 
 const ReferralLink = ({ userId = "", isActive = false }) => {
   const [copied, setCopied] = useState(false);
 
-  const baseUrl = "https://loopin.com/register"; // 🔁 Replace with real domain
+  // Use current origin dynamically + /register path
+  const baseUrl = `${window.location.origin}/register`;
   const referralLink = `${baseUrl}?ref=${userId}`;
 
   const handleCopy = async () => {
