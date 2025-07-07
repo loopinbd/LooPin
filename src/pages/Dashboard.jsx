@@ -9,16 +9,16 @@ import ReferralLink from "../components/ReferralLink";
 import "../styles/dashboard.css";
 
 const Dashboard = () => {
-  const { user } = useAuth();
+  const { currentUser } = useAuth();  // changed from user to currentUser
   const [balance, setBalance] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [teamLevels, setTeamLevels] = useState([]);
 
   useEffect(() => {
     const fetchUserData = async () => {
-      if (!user) return;
+      if (!currentUser) return;
 
-      const userRef = doc(db, "users", user.uid);
+      const userRef = doc(db, "users", currentUser.uid);
       const userSnap = await getDoc(userRef);
 
       if (userSnap.exists()) {
@@ -42,7 +42,7 @@ const Dashboard = () => {
     };
 
     fetchUserData();
-  }, [user]);
+  }, [currentUser]);
 
   return (
     <PageWrapper>
@@ -57,7 +57,7 @@ const Dashboard = () => {
         </section>
 
         <section className="referral-section">
-          <ReferralLink userId={user?.uid} isActive={isActive} />
+          <ReferralLink userId={currentUser?.uid} isActive={isActive} />
         </section>
       </div>
 
