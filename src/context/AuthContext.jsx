@@ -24,13 +24,13 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, loading }}>
-      {children}
+    <AuthContext.Provider value={{ currentUser: user, loading }}>
+      {!loading && children}
     </AuthContext.Provider>
   );
 };
 
 export default AuthProvider;
 
-// ✅ This is the missing piece causing the build error
+// Optional: useAuth() helper
 export const useAuth = () => React.useContext(AuthContext);
