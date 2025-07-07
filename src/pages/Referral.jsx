@@ -11,43 +11,46 @@ const Referral = () => {
   const { currentUser } = useContext(AuthContext);
   const [isActive, setIsActive] = useState(null);
   const [commissionData, setCommissionData] = useState([]);
+  const [debugText, setDebugText] = useState("Starting debug...");
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log("🔁 fetchData triggered");
-
       if (!currentUser) {
-        console.log("❌ currentUser is null");
+        setDebugText("❌ currentUser is null");
         return;
       }
 
-      console.log("✅ currentUser UID:", currentUser.uid);
+      setDebugText(`✅ currentUser.uid = ${currentUser.uid}`);
 
       try {
         const userRef = doc(db, "users", currentUser.uid);
         const userDoc = await getDoc(userRef);
 
-        if (userDoc.exists()) {
-          const userData = userDoc.data();
-          console.log("📄 Firestore userData:", userData);
-          console.log("➡️ isActive type:", typeof userData.isActive, "value:", userData.isActive);
-
-          const activeStatus = userData?.isActive === true;
-          setIsActive(activeStatus);
-
-          const teamData = userData?.teamLevels || {};
-          const levels = Object.entries(teamData).map(([level, data]) => ({
-            level: parseInt(level),
-            earned: data.earned || 0,
-            teamCount: data.teamCount || 0,
-          }));
-          setCommissionData(levels);
-        } else {
-          console.log("❌ User document not found");
+        if (!userDoc.exists()) {
+          setDebugText("❌ User document not found in Firestore");
           setIsActive(false);
+          return;
         }
+
+        const userData = userDoc.data();
+        const activeStatus = userData?.isActive === true;
+
+        setDebugText(
+          `✅ Firestore user data loaded\nisActive: ${userData?.isActive}\nactivationStatus: ${userData?.activationStatus}\nType: ${typeof userData?.isActive}`
+        );
+
+        setIsActive(activeStatus);
+
+        const teamData = userData?.teamLevels || {};
+        const levels = Object.entries(teamData).map(([level, data]) => ({
+          level: parseInt(level),
+          earned: data.earned || 0,
+          teamCount: data.teamCount || 0,
+        }));
+        setCommissionData(levels);
       } catch (error) {
-        console.error("🔥 Error fetching user:", error);
+        console.error("🔥 Error fetching user data:", error);
+        setDebugText("🔥 Error: " + error.message);
         setIsActive(false);
       }
     };
@@ -55,14 +58,14 @@ const Referral = () => {
     fetchData();
   }, [currentUser]);
 
-  console.log("🔥 isActive =", isActive);
-  console.log("👤 currentUser =", currentUser);
-
   if (isActive === null) {
     return (
       <PageWrapper>
         <div className="referral-page" style={{ color: "#fff", textAlign: "center", padding: "40px" }}>
           <h2>Loading...</h2>
+          <pre style={{ marginTop: "20px", color: "#aaa", fontSize: "14px", background: "#111", padding: "10px" }}>
+            {debugText}
+          </pre>
         </div>
       </PageWrapper>
     );
