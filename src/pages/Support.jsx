@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import PageWrapper from "../components/PageWrapper";
 import SupportChat from "../components/SupportChat";
 import "../styles/support.css";
@@ -12,20 +12,20 @@ import {
   orderBy,
   serverTimestamp,
 } from "firebase/firestore";
-import { useAuth } from "../context/AuthContext";
+import { AuthContext } from "../context/AuthContext"; // 🔁 Fix here
 
 const Support = () => {
-  const { user } = useAuth();
+  const { currentUser } = useContext(AuthContext); // ✅ Use currentUser
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const [sending, setSending] = useState(false);
 
   useEffect(() => {
-    if (!user) return;
+    if (!currentUser) return;
 
     const q = query(
       collection(db, "supportMessages"),
-      where("userId", "==", user.uid),
+      where("userId", "==", currentUser.uid),
       orderBy("createdAt", "asc")
     );
 
@@ -35,24 +35,27 @@ const Support = () => {
     });
 
     return () => unsubscribe();
-  }, [user]);
+  }, [currentUser]);
 
   const sendMessage = async () => {
     if (!newMessage.trim()) return;
-    if (sending) return;
+    if (sending || !currentUser) return;
 
     setSending(true);
+
     try {
       await addDoc(collection(db, "supportMessages"), {
-        userId: user.uid,
-        email: user.email,
+        userId: currentUser.uid,
+        email: currentUser.email,
         content: newMessage.trim(),
         createdAt: serverTimestamp(),
         reply: "",
       });
+
+      console.log("✅ Message sent!");
       setNewMessage("");
     } catch (err) {
-      console.error("Failed to send message", err);
+      console.error("❌ Failed to send message:", err);
     } finally {
       setSending(false);
     }
