@@ -23,26 +23,31 @@ const Referral = () => {
 
       console.log("✅ currentUser UID:", currentUser.uid);
 
-      const userRef = doc(db, "users", currentUser.uid);
-      const userDoc = await getDoc(userRef);
+      try {
+        const userRef = doc(db, "users", currentUser.uid);
+        const userDoc = await getDoc(userRef);
 
-      if (userDoc.exists()) {
-        const userData = userDoc.data();
-        console.log("📄 User data from Firestore:", userData);
+        if (userDoc.exists()) {
+          const userData = userDoc.data();
+          console.log("📄 Firestore userData:", userData);
+          console.log("➡️ isActive type:", typeof userData.isActive, "value:", userData.isActive);
 
-        // ✅ Support both isActive or activationStatus === 'approved'
-        const activeStatus = userData?.isActive ?? (userData?.activationStatus === "approved");
-        setIsActive(activeStatus);
+          const activeStatus = userData?.isActive === true;
+          setIsActive(activeStatus);
 
-        const teamData = userData?.teamLevels || {};
-        const levels = Object.entries(teamData).map(([level, data]) => ({
-          level: parseInt(level),
-          earned: data.earned || 0,
-          teamCount: data.teamCount || 0,
-        }));
-        setCommissionData(levels);
-      } else {
-        console.log("❌ User doc not found in Firestore");
+          const teamData = userData?.teamLevels || {};
+          const levels = Object.entries(teamData).map(([level, data]) => ({
+            level: parseInt(level),
+            earned: data.earned || 0,
+            teamCount: data.teamCount || 0,
+          }));
+          setCommissionData(levels);
+        } else {
+          console.log("❌ User document not found");
+          setIsActive(false);
+        }
+      } catch (error) {
+        console.error("🔥 Error fetching user:", error);
         setIsActive(false);
       }
     };
@@ -51,6 +56,7 @@ const Referral = () => {
   }, [currentUser]);
 
   console.log("🔥 isActive =", isActive);
+  console.log("👤 currentUser =", currentUser);
 
   if (isActive === null) {
     return (
