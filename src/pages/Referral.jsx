@@ -93,7 +93,7 @@ const Referral = () => {
             <TeamCommission levels={commissionData} />
           </>
         ) : (
-          <div>
+          <div className="referral-locked-message">
             <h2>Referral System Locked</h2>
             <p>Activate your account to get your referral link and team commission data.</p>
           </div>
