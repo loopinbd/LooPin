@@ -13,7 +13,7 @@ const TeamCommission = ({ levels = [] }) => {
   const [filteredLevels, setFilteredLevels] = useState([]);
 
   useEffect(() => {
-    // For now no real timeframe filtering, just set levels as is.
+    // Future enhancement: apply filtering based on timeframe
     setFilteredLevels(levels);
   }, [levels, timeframe]);
 
@@ -21,8 +21,8 @@ const TeamCommission = ({ levels = [] }) => {
     const found = filteredLevels.find((l) => Number(l.level) === lvl);
     return {
       level: lvl,
-      teamCount: found ? found.teamCount : 0,
-      earned: found ? found.earned : 0,
+      teamCount: found?.teamCount || 0,
+      earned: found?.earned || 0,
     };
   });
 
@@ -51,7 +51,7 @@ const TeamCommission = ({ levels = [] }) => {
           <div key={level} className={`commission-card level-${level}`}>
             <h4 className="level-title">Level {level}</h4>
             <div className="team-count">{teamCount} Members</div>
-            <div className="earned-amount">${earned.toFixed(2)}</div>
+            <div className="earned-amount">${Number(earned).toFixed(2)}</div>
           </div>
         ))}
       </div>
@@ -59,7 +59,7 @@ const TeamCommission = ({ levels = [] }) => {
       <div className="total-box">
         <h4>Total</h4>
         <div className="team-count">{totalTeam} Members</div>
-        <div className="earned-amount">${totalEarned.toFixed(2)}</div>
+        <div className="earned-amount">${Number(totalEarned).toFixed(2)}</div>
       </div>
     </div>
   );
