@@ -1,6 +1,4 @@
-
-‎
-‎import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 ‎import "../styles/SupportChat.css";
 ‎
 ‎const SupportChat = ({ messages = [] }) => {
@@ -38,3 +36,4 @@
 ‎};
 ‎
 ‎export default SupportChat;
+‎
