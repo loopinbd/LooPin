@@ -9,7 +9,7 @@ import ReferralLink from "../components/ReferralLink";
 import "../styles/dashboard.css";
 
 const Dashboard = () => {
-  const { currentUser } = useAuth();  // changed from user to currentUser
+  const { currentUser } = useAuth();
   const [balance, setBalance] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [teamLevels, setTeamLevels] = useState([]);
@@ -18,26 +18,30 @@ const Dashboard = () => {
     const fetchUserData = async () => {
       if (!currentUser) return;
 
-      const userRef = doc(db, "users", currentUser.uid);
-      const userSnap = await getDoc(userRef);
+      try {
+        const userRef = doc(db, "users", currentUser.uid);
+        const userSnap = await getDoc(userRef);
 
-      if (userSnap.exists()) {
-        const data = userSnap.data();
-        setBalance(data.availableBalance || 0);
-        setIsActive(data.isActive || false);
+        if (userSnap.exists()) {
+          const data = userSnap.data();
+          setBalance(data.availableBalance || 0);
+          setIsActive(data.activationStatus === "active");
 
-        const levels = [];
-        if (data.teamLevels) {
-          for (const [levelKey, levelData] of Object.entries(data.teamLevels)) {
-            levels.push({
-              level: levelKey,
-              teamCount: levelData.count || 0,
-              earned: levelData.earned || 0,
-            });
+          const levels = [];
+          if (data.teamLevels) {
+            for (const [levelKey, levelData] of Object.entries(data.teamLevels)) {
+              levels.push({
+                level: levelKey,
+                teamCount: levelData.teamCount || 0, // ✅ fixed field name
+                earned: levelData.earned || 0,
+              });
+            }
           }
-        }
 
-        setTeamLevels(levels);
+          setTeamLevels(levels);
+        }
+      } catch (error) {
+        console.error("Failed to fetch user dashboard data:", error);
       }
     };
 
