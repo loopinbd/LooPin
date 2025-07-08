@@ -8,6 +8,28 @@
   color: white;
   box-shadow: 0 6px 14px rgba(255, 215, 0, 0.15);
 }
+.chat-message.user-msg {
+  background: #222;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin: 8px 0;
+  max-width: 80%;
+  align-self: flex-start;
+}
+
+.chat-message.admin-msg {
+  background: #444;
+  color: gold;
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin: 8px 0;
+  max-width: 80%;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+
 
 .chat-title {
   color: gold;
