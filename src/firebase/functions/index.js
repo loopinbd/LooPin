@@ -4,7 +4,6 @@ admin.initializeApp();
 
 const db = admin.firestore();
 
-// Notification on new activation request
 exports.onNewActivationRequest = functions.firestore
   .document("activationRequests/{requestId}")
   .onCreate(async (snap, context) => {
@@ -27,14 +26,12 @@ exports.onNewActivationRequest = functions.firestore
     }
   });
 
-// Commission rates per level
 const commissionRates = {
   1: 3,
   2: 2,
   3: 1
 };
 
-// Add commission to a user's totalCommission field transactionally
 async function addCommissionToUser(userId, amount) {
   const userRef = db.collection("users").doc(userId);
   await db.runTransaction(async (tx) => {
@@ -45,7 +42,6 @@ async function addCommissionToUser(userId, amount) {
   });
 }
 
-// Trigger on user document update to check activation status change
 exports.onUserActivated = functions.firestore
   .document("users/{userId}")
   .onUpdate(async (change, context) => {
@@ -53,7 +49,6 @@ exports.onUserActivated = functions.firestore
     const after = change.after.data();
     const userId = context.params.userId;
 
-    // Run only if isActive changed from false (or undefined) to true
     if (before.isActive !== true && after.isActive === true) {
       let currentUserId = userId;
 
@@ -69,6 +64,5 @@ exports.onUserActivated = functions.firestore
         currentUserId = refererId;
       }
     }
-
     return null;
   });
