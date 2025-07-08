@@ -18,10 +18,12 @@ const SupportChat = ({ messages = [] }) => {
         ) : (
           messages.map((msg, index) => (
             <div className="message-pair" key={index}>
-              <div className="chat-message user-msg">
-                <span>{msg.content}</span>
-              </div>
-              {msg.reply && (
+              {msg.content && (
+                <div className="chat-message user-msg">
+                  <span>{msg.content}</span>
+                </div>
+              )}
+              {msg.reply !== undefined && msg.reply.trim() !== "" && (
                 <div className="chat-message admin-msg">
                   <span>{msg.reply}</span>
                 </div>
