@@ -16,7 +16,7 @@ exports.onNewActivationRequest = functions.firestore
       message: `Dear ${email}, your activation request is received.`,
       userId,
       seen: false,
-      createdAt: admin.firestore.FieldValue.serverTimestamp(),
+      createdAt: admin.firestore.FieldValue.serverTimestamp()
     };
 
     try {
@@ -31,7 +31,7 @@ exports.onNewActivationRequest = functions.firestore
 const commissionRates = {
   1: 3,
   2: 2,
-  3: 1,
+  3: 1
 };
 
 // Add commission to a user's totalCommission field transactionally
