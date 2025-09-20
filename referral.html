@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referral - Loopin</title>
+    <link rel="stylesheet" href="css/referral.css">
+</head>
+<body>
+    <div class="dashboard-header">
+        <div class="header-left">
+            <img src="img/logo.png" alt="Loopin Logo" class="logo-small">
+            <span class="app-name-small">Loopin</span>
+        </div>
+        <div class="header-right">
+            <span class="user-name">Welcome, User!</span>
+            <div class="slidebar-icon" onclick="toggleSlidebar()">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="slidebar">
+        <div class="slidebar-header">
+            <img src="img/logo.png" alt="Loopin Logo" class="logo-large">
+        </div>
+        <ul class="slidebar-menu">
+            <li><a href="activation.html" class="menu-item" id="activation-link">Activation</a></li>
+            <li><a href="withdraw.html" class="menu-item" id="withdraw-link">Withdraw</a></li>
+            <li><a href="referral.html" class="menu-item active" id="referral-link">Referral</a></li>
+            <li><a href="support.html" class="menu-item" id="support-link">Support</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="referral-link-container">
+            <h2>Your Referral Link</h2>
+            <div class="link-box">
+                <p id="referral-link">Loading...</p>
+                <button id="copyLinkButton">Copy</button>
+            </div>
+        </div>
+
+        <div class="referral-stats">
+            <h2>Your Referral Statistics</h2>
+            <div class="stats-cards-container">
+                <div class="stat-card">
+                    <h4>Total Referrals</h4>
+                    <p id="total-referrals">0</p>
+                </div>
+                <div class="stat-card">
+                    <h4>Total Commission</h4>
+                    <p id="total-commission">$0.00</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="referred-users-table">
+            <h2>Your Referred Users</h2>
+            <table id="referral-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script type="module" src="js/referral.js"></script>
+</body>
+</html>
