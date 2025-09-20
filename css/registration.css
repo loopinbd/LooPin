@@ -1,0 +1,148 @@
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 400px;
+    padding: 2rem;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.header .logo {
+    width: 80px;
+    margin-bottom: 1rem;
+}
+
+.app-name {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #FFD700;
+    margin: 0.5rem 0;
+}
+
+.tagline {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-bottom: 2rem;
+}
+
+.title {
+    font-size: 1.5rem;
+    color: #FFD700;
+    margin-bottom: 1.5rem;
+}
+
+.input-group {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #FFD700;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #333;
+    border: 1px solid #FFD700;
+    color: #fff;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #fff;
+}
+
+.terms-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1.5rem 0;
+}
+
+.terms-section input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+.terms-section label {
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.terms-section a {
+    color: #FFD700;
+    text-decoration: none;
+}
+
+#registerButton {
+    width: 100%;
+    padding: 1rem;
+    background-color: #FFD700;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#registerButton:hover {
+    background-color: #e6b800;
+}
+
+#registerButton:disabled {
+    background-color: #555;
+    color: #888;
+    cursor: not-allowed;
+}
+
+.login-link {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.login-link a {
+    color: #FFD700;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Footer Section */
+footer {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: right;
+    font-size: 0.7rem;
+    color: #666;
+    padding-right: 20px;
+}
+
+.watermark {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 0.8rem;
+    color: #333;
+    z-index: -1;
+    transform: rotate(-90deg);
+    transform-origin: 100% 100%;
+}
