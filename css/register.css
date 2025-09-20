@@ -1,0 +1,221 @@
+/* css/register.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    --primary-golden: #FFD700; /* সোনালী */
+    --secondary-black: #1a1a1a; /* কালো */
+    --text-white: #ffffff; /* সাদা টেক্সট */
+    --button-bg-normal: #FFD700;
+    --button-text-normal: #1a1a1a;
+    --button-bg-disabled: #8a6d00; /* ডিসেবল বাটনের জন্য একটু গাঢ় সোনালী */
+    --error-red: #ff4d4d;
+    --success-green: #4CAF50;
+    --transparent-black: rgba(0, 0, 0, 0.7);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, var(--secondary-black), #333333);
+    color: var(--text-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-y: auto; /* প্রয়োজনে স্ক্রলবার */
+    position: relative; /* ওয়াটারমার্কের জন্য */
+}
+
+.container {
+    background-color: var(--transparent-black);
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    margin: 20px auto; /* উপরে নিচে মার্জিন যোগ */
+    border: 1px solid var(--primary-golden); /* গোল্ডেন বর্ডার */
+}
+
+.logo-section .app-logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+    border-radius: 50%; /* যদি লোগো গোলাকার হয় */
+    border: 2px solid var(--primary-golden);
+}
+
+.logo-section .app-name {
+    color: var(--primary-golden);
+    font-size: 2.5em;
+    margin: 0 0 5px 0;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.tagline {
+    font-size: 0.9em;
+    color: var(--text-white);
+    margin-bottom: 25px;
+    font-weight: 300;
+}
+
+h2 {
+    color: var(--primary-golden);
+    margin-bottom: 25px;
+    font-size: 1.8em;
+    font-weight: 600;
+}
+
+.input-group {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-white);
+    font-size: 0.9em;
+    font-weight: 400;
+}
+
+.input-group input[type="text"],
+.input-group input[type="email"],
+.input-group input[type="tel"],
+.input-group input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 12px;
+    border: 1px solid var(--primary-golden);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-white);
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.input-group input:focus {
+    border-color: #ffd966; /* ফোকাস করলে একটু উজ্জ্বল সোনালী */
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    font-size: 0.9em;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 10px;
+    accent-color: var(--primary-golden); /* চেকবক্সের রঙ */
+}
+
+.checkbox-group label {
+    color: var(--text-white);
+}
+
+.checkbox-group a {
+    color: var(--primary-golden);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.checkbox-group a:hover {
+    text-decoration: underline;
+}
+
+.register-button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--button-bg-normal);
+    color: var(--button-text-normal);
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.register-button:hover:not(:disabled) {
+    background-color: #e6c200; /* হোভারে একটু গাঢ় সোনালী */
+}
+
+.register-button:disabled {
+    background-color: var(--button-bg-disabled);
+    cursor: not-allowed;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.message {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: 600;
+    display: none; /* প্রাথমিকভাবে লুকানো থাকবে */
+}
+
+.message.error {
+    background-color: rgba(255, 77, 77, 0.2);
+    color: var(--error-red);
+    border: 1px solid var(--error-red);
+}
+
+.message.success {
+    background-color: rgba(76, 175, 80, 0.2);
+    color: var(--success-green);
+    border: 1px solid var(--success-green);
+}
+
+.login-link {
+    margin-top: 25px;
+    font-size: 0.9em;
+    color: var(--text-white);
+}
+
+.login-link a {
+    color: var(--primary-golden);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+.watermark {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    color: rgba(255, 255, 255, 0.15); /* হালকা সাদা রঙ */
+    font-size: 0.8em;
+    font-weight: 300;
+    pointer-events: none; /* যাতে ক্লিক করা না যায় */
+    z-index: 1000;
+}
+
+/* রেসপনসিভ ডিজাইন */
+@media (max-width: 600px) {
+    .container {
+        padding: 25px 20px;
+        margin: 15px auto;
+    }
+    .logo-section .app-name {
+        font-size: 2em;
+    }
+    h2 {
+        font-size: 1.5em;
+    }
+}
