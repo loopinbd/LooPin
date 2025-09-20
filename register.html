@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loopin - Register</title>
+    <link rel="stylesheet" href="css/register.css">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon"> <!-- লোগো হিসাবে Favicon -->
+</head>
+<body>
+    <div class="container">
+        <div class="logo-section">
+            <img src="images/app_logo.png" alt="Loopin App Logo" class="app-logo">
+            <h1 class="app-name">Loopin</h1>
+            <p class="tagline">Unlock Passive Income Power by Blockchain</p>
+        </div>
+
+        <div class="registration-form-section">
+            <h2>Create Your Account</h2>
+            <form id="registrationForm">
+                <div class="input-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email address" required>
+                </div>
+                <div class="input-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="e.g., +8801XXXXXXXXX" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Min 6 characters" required>
+                </div>
+                <div class="input-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" placeholder="Re-enter your password" required>
+                </div>
+                <div class="input-group">
+                    <label for="referCode">Refer Code (Optional)</label>
+                    <input type="text" id="referCode" placeholder="If you have a refer code">
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="termsCheckbox" required>
+                    <label for="termsCheckbox">I agree to the <a href="terms.html">Terms & Conditions</a></label>
+                </div>
+                <button type="submit" id="registerButton" class="register-button">Register</button>
+                <div id="message" class="message"></div>
+            </form>
+            <p class="login-link">Already registered? <a href="login.html">Log In</a></p>
+        </div>
+    </div>
+
+    <div class="watermark">Power by Blockchain</div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    
+    <!-- তোমার Firebase ইনিশিয়ালাইজেশন স্ক্রিপ্ট -->
+    <script type="module" src="js/firebase_init.js"></script>
+    <!-- রেজিস্ট্রেশন পেজের নিজস্ব স্ক্রিপ্ট -->
+    <script type="module" src="js/register.js"></script>
+</body>
+</html>
