@@ -1,0 +1,54 @@
+<div class="dashboard-header">
+    <div class="header-left">
+        <img src="img/logo.png" alt="Loopin Logo" class="logo-small">
+        <span class="app-name-small">Loopin</span>
+    </div>
+    <div class="header-right">
+        <span class="user-name">Welcome, User!</span>
+        <div class="slidebar-icon" onclick="toggleSlidebar()">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </div>
+</div>
+
+<div class="slidebar">
+    <div class="slidebar-header">
+        <img src="img/logo.png" alt="Loopin Logo" class="logo-large">
+    </div>
+    <ul class="slidebar-menu">
+        <li><a href="activation.html" class="menu-item" id="activation-link">Activation</a></li>
+        <li><a href="withdraw.html" class="menu-item" id="withdraw-link">Withdraw</a></li>
+        <li><a href="referral.html" class="menu-item" id="referral-link">Referral</a></li>
+        <li><a href="support.html" class="menu-item" id="support-link">Support</a></li>
+    </ul>
+</div>
+
+<div class="main-content">
+    <div class="balance-section">
+        <h3>Current Account Balance</h3>
+        <h1 id="account-balance">$0.00</h1>
+    </div>
+
+    <div class="team-commission-section">
+        <h3>Level-wise Team & Commission</h3>
+        <div class="level-cards-container">
+            <div class="level-card">
+                <h4>Level 1</h4>
+                <p id="level1-team">Team: 0</p>
+                <p id="level1-commission">Commission: $0</p>
+            </div>
+            <div class="level-card">
+                <h4>Level 2</h4>
+                <p id="level2-team">Team: 0</p>
+                <p id="level2-commission">Commission: $0</p>
+            </div>
+            </div>
+    </div>
+</div>
+
+<footer class="dashboard-footer">
+    <span class="copyright">© 2025 All rights reserved</span>
+    <span class="watermark">Power by Blockchain</span>
+</footer>
