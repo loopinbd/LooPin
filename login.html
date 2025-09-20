@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loopin - Login</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <div class="logo-section">
+            <img src="images/app_logo.png" alt="Loopin App Logo" class="app-logo">
+            <h1 class="app-name">Loopin</h1>
+            <p class="tagline">Unlock Passive Income Power by Blockchain</p>
+        </div>
+
+        <div class="login-form-section">
+            <h2>Login to Your Account</h2>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email address" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" id="loginButton" class="login-button">Login</button>
+                <div id="message" class="message"></div>
+            </form>
+            <p class="register-link">Not registered yet? <a href="register.html">Register now</a></p>
+        </div>
+    </div>
+
+    <div class="watermark">Power by Blockchain</div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    
+    <!-- তোমার Firebase ইনিশিয়ালাইজেশন স্ক্রিপ্ট -->
+    <script type="module" src="js/firebase_init.js"></script>
+    <!-- লগইন পেজের নিজস্ব স্ক্রিপ্ট -->
+    <script type="module" src="js/login.js"></script>
+</body>
+</html>
