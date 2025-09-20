@@ -1,7 +1,7 @@
 import { auth, database, ref, get, set, onAuthStateChanged } from './firebase.js';
 
 // Slidebar Toggle Function
-function toggleSlidebar() {
+window.toggleSlidebar = function() {
     const slidebar = document.querySelector('.slidebar');
     slidebar.classList.toggle('open');
 }
@@ -10,7 +10,7 @@ function toggleSlidebar() {
 let adminData = {};
 
 // Copy to Clipboard function
-function copyToClipboard(elementId) {
+window.copyToClipboard = function(elementId) {
     const element = document.getElementById(elementId);
     const textToCopy = element.textContent;
     navigator.clipboard.writeText(textToCopy).then(() => {
@@ -39,7 +39,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const adminSnapshot = await get(adminRef);
         if (adminSnapshot.exists()) {
             adminData = adminSnapshot.val();
-            document.getElementById('bdt-amount').textContent = (12 * adminData.dollarRate).toFixed(2);
+            // Assuming the dollar rate is fetched successfully
+            const bdtAmount = 12 * adminData.dollarRate;
+            document.getElementById('bdt-amount').textContent = bdtAmount.toFixed(2);
             document.getElementById('wallet-address-bdt').textContent = adminData.bkashNagadWallet;
             document.getElementById('usdt-address').textContent = adminData.usdtWallet;
         } else {
@@ -57,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p>Total Earning: <span id="total-earning">$${userSnapshot.val().balance.toFixed(2)}</span></p>
                 </div>
             `;
+            document.getElementById('payment-options').classList.add('hidden');
         } else {
             // Check for pending activation request
             const pendingRef = ref(database, 'activation_requests/' + user.uid);
@@ -69,6 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>Please wait some time for the process to complete.</p>
                     </div>
                 `;
+                document.getElementById('payment-options').classList.add('hidden');
+                document.getElementById('payNowButton').classList.add('hidden');
             }
         }
     });
@@ -82,6 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('bkash-nagad').addEventListener('click', () => {
         document.querySelectorAll('.method-card').forEach(card => card.classList.remove('selected'));
         document.getElementById('bkash-nagad').classList.add('selected');
+        // This will now use the old manual form
         showPaymentForm('payment-form-bkash-nagad');
     });
 
