@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Loopin</title>
+    <link rel="stylesheet" href="css/registration.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="img/logo.png" alt="Loopin Logo" class="logo">
+            <h1 class="app-name">Loopin</h1>
+            <p class="tagline">Unlock Passive Income Power by Blockchain</p>
+        </div>
+
+        <div class="form-section">
+            <h2 class="title">Register</h2>
+            <form id="registrationForm">
+                <div class="input-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="input-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                </div>
+                <div class="input-group">
+                    <label for="referCode">Referral Code</label>
+                    <input type="text" id="referCode" name="referCode">
+                </div>
+
+                <div class="terms-section">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">I agree to the <a href="terms.html">Terms and Conditions</a>.</label>
+                </div>
+                
+                <button type="submit" id="registerButton">Register</button>
+            </form>
+            
+            <p class="login-link">
+                Already registered? <a href="login.html">Log In</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
