@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activate Account - Loopin</title>
     <link rel="stylesheet" href="css/activation.css">
-    <link rel="stylesheet" href="css/common.css"> </head>
+    <link rel="stylesheet" href="css/common.css">
+</head>
 <body>
-    <header>
+    
+    <div class="dashboard-header">
         <div class="header-left">
             <img src="img/logo.png" alt="Loopin Logo" class="logo-small">
             <span class="app-name-small">Loopin</span>
@@ -20,14 +22,19 @@
                 <div class="line"></div>
             </div>
         </div>
-    </header>
-
+    </div>
+    
     <div class="slidebar">
-        <a href="dashboard.html">Dashboard</a>
-        <a href="activation.html" class="active">Activation</a>
-        <a href="referral.html">Referral</a>
-        <a href="support.html">Support</a>
-        <a href="logout.html">Log Out</a>
+        <div class="slidebar-header">
+            <img src="img/logo.png" alt="Loopin Logo" class="logo-large">
+        </div>
+        <ul class="slidebar-menu">
+            <li><a href="dashboard.html" class="menu-item">Dashboard</a></li>
+            <li><a href="activation.html" class="menu-item active">Activation</a></li>
+            <li><a href="withdraw.html" class="menu-item">Withdraw</a></li>
+            <li><a href="referral.html" class="menu-item">Referral</a></li>
+            <li><a href="support.html" class="menu-item">Support</a></li>
+        </ul>
     </div>
 
     <div class="main-content">
@@ -74,7 +81,7 @@
         </div>
 
         <div id="payment-form-usdt" class="payment-form hidden">
-            <h3>USDT Payment</h3>
+            <h3>USDT Payment</h3`>
             <p><strong>Amount:</strong> 12 USDT</p>
             <p><strong>USDT Address:</strong> <span id="usdt-address"></span></p>
             <button class="copy-button" onclick="copyToClipboard('usdt-address')">Copy Address</button>
