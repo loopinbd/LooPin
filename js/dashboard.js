@@ -1,12 +1,12 @@
-// dashboard.js
+//dashboard.js
 
 import { auth, database, ref, get, onAuthStateChanged } from './firebase.js';
 
-// Slidebar Toggle Function
-function toggleSlidebar() {
+// Slidebar Toggle Function - Made globally accessible
+window.toggleSlidebar = function() {
     const slidebar = document.querySelector('.slidebar');
     slidebar.classList.toggle('open');
-}
+};
 
 // Check user login state and fetch data
 onAuthStateChanged(auth, async (user) => {
