@@ -56,7 +56,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 25px;
+    width: 60px;
     height: 20px;
     cursor: pointer;
 }
