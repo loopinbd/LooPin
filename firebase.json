@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "Loopin",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/login.html"
+      }
+    ]
+  }
+}
