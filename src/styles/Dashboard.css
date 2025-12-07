@@ -1,0 +1,153 @@
+/* ================================
+   DASHBOARD CONTAINER
+=================================== */
+.dashboard-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(180deg, #0a0a0a, #111, #000);
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+/* ================================
+   CURRENT BALANCE BOX
+=================================== */
+.balance-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 18px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.balance-box p {
+  font-size: 14px;
+  color: #bbb;
+  margin-bottom: 8px;
+}
+
+.balance-box h3 {
+  font-size: 28px;
+  color: #f7c12f;
+  margin: 0;
+}
+
+/* ================================
+   TEAM LEVEL CARDS
+=================================== */
+.team-levels {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.level-card {
+  flex: 1 1 30%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 18px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.level-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+}
+
+.level-card p {
+  font-size: 14px;
+  color: #bbb;
+  margin-bottom: 8px;
+}
+
+.level-card h4 {
+  font-size: 20px;
+  color: #f7c12f;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* ================================
+   COMMISSION BOXES
+=================================== */
+.commission-section {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.commission-card {
+  flex: 1 1 30%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+  padding: 18px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
+}
+
+.commission-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+}
+
+.commission-card p {
+  font-size: 14px;
+  color: #bbb;
+  margin-bottom: 8px;
+}
+
+.commission-card h4 {
+  font-size: 20px;
+  color: #f7c12f;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* ================================
+   TIME FILTER
+=================================== */
+.dashboard-timefilter {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.dashboard-timefilter button {
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: none;
+  background: #1f2937;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s ease;
+  font-weight: 500;
+}
+
+.dashboard-timefilter button:hover {
+  background: #374151;
+}
+
+.dashboard-timefilter button.active {
+  background: #0ea5e9;
+  color: #fff;
+}
+
+/* ================================
+   FOOTER / WATERMARK
+=================================== */
+.dashboard-footer {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.15);
+  margin-top: 30px;
+}
