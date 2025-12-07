@@ -1,0 +1,90 @@
+/* ================================
+   ADMIN WITHDRAW REQUESTS PAGE CONTAINER
+=================================== */
+.admin-withdraw-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(180deg, #0a0a0a, #111, #000);
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+/* ================================
+   PAGE TITLE
+=================================== */
+.admin-withdraw-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #f7c12f;
+  margin-bottom: 25px;
+}
+
+/* ================================
+   REQUEST TABLE
+=================================== */
+.withdraw-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.03);
+}
+
+.withdraw-table th,
+.withdraw-table td {
+  padding: 12px 15px;
+  text-align: center;
+  font-size: 14px;
+  color: #ccc;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.withdraw-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: #f7c12f;
+  font-weight: 600;
+}
+
+/* ================================
+   ACTION BUTTONS
+=================================== */
+.action-btn {
+  padding: 8px 12px;
+  margin: 2px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.25s ease;
+  font-size: 13px;
+}
+
+.action-btn.approve {
+  background: #0ea5e9;
+  color: #fff;
+}
+
+.action-btn.approve:hover {
+  background: #38bdf8;
+}
+
+.action-btn.reject {
+  background: #f87171;
+  color: #fff;
+}
+
+.action-btn.reject:hover {
+  background: #fca5a5;
+}
+
+/* ================================
+   FOOTER / WATERMARK
+=================================== */
+.admin-withdraw-footer {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.15);
+  margin-top: 30px;
+}
