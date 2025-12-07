@@ -1,0 +1,136 @@
+/* ================================
+   REFERRAL PAGE CONTAINER
+=================================== */
+.referral-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(180deg, #0a0a0a, #111, #000);
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+/* ================================
+   REFERRAL BOX
+=================================== */
+.referral-box {
+  max-width: 500px;
+  margin: 50px auto;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 30px 35px;
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+/* TITLE */
+.referral-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #f7c12f;
+  margin-bottom: 15px;
+}
+
+/* DESCRIPTION */
+.referral-desc {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* REFERRAL LINK INPUT */
+.referral-link {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+.referral-link:focus {
+  border-color: #f7c12f;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* COPY BUTTON */
+.referral-copy-btn {
+  padding: 12px 0;
+  width: 100%;
+  background: #f7c12f;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #000;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.referral-copy-btn:hover {
+  background: #ffe08a;
+}
+
+.referral-copy-btn:disabled {
+  background: #7a7a7a;
+  cursor: not-allowed;
+}
+
+/* REFERRAL STATUS */
+.referral-status {
+  font-size: 14px;
+  margin-top: 18px;
+  color: #ccc;
+}
+
+.referral-status.inactive {
+  color: #f87171;
+}
+
+.referral-status.active {
+  color: #0ea5e9;
+}
+
+/* COMMISSION BOXES */
+.referral-commission-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 25px;
+}
+
+.commission-card {
+  flex: 1 1 45%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+  padding: 15px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.commission-card h4 {
+  font-size: 18px;
+  color: #f7c12f;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.commission-card p {
+  font-size: 14px;
+  color: #ccc;
+  margin: 0;
+}
+
+/* FOOTER / WATERMARK */
+.referral-footer {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.15);
+  margin-top: 30px;
+}
