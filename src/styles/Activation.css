@@ -1,0 +1,94 @@
+/* ================================
+   ACTIVATION PAGE CONTAINER
+=================================== */
+.activation-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(180deg, #0a0a0a, #111, #000);
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+/* ================================
+   ACTIVATION BOX
+=================================== */
+.activation-box {
+  max-width: 500px;
+  margin: 50px auto;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 18px;
+  padding: 30px 35px;
+  text-align: center;
+}
+
+/* TITLE */
+.activation-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #f7c12f;
+  margin-bottom: 18px;
+}
+
+/* DESCRIPTION */
+.activation-desc {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+/* PAY NOW BUTTON */
+.activation-btn {
+  width: 100%;
+  padding: 14px;
+  background: #f7c12f;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.activation-btn:hover {
+  background: #ffe08a;
+}
+
+.activation-btn:disabled {
+  background: #7a7a7a;
+  cursor: not-allowed;
+}
+
+/* STATUS MESSAGES */
+.activation-status {
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ccc;
+}
+
+.activation-status.pending {
+  color: #facc15;
+}
+
+.activation-status.active {
+  color: #0ea5e9;
+}
+
+.activation-status.rejected {
+  color: #f87171;
+}
+
+/* ================================
+   FOOTER / WATERMARK
+=================================== */
+.activation-footer {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.15);
+  margin-top: 30px;
+}
