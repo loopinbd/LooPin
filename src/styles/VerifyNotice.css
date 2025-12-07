@@ -1,0 +1,101 @@
+/* ===============================
+   MAIN CONTAINER
+================================== */
+.verify-container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0a0a0a, #111, #000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ===============================
+   BOX WRAPPER
+================================== */
+.verify-box {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 35px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+/* App Logo */
+.verify-logo {
+  font-size: 34px;
+  font-weight: 700;
+  color: #f7c12f;
+  margin-bottom: 10px;
+}
+
+/* Subtitle */
+.verify-subtitle {
+  font-size: 13px;
+  color: #bbb;
+  margin-bottom: 25px;
+}
+
+/* Email Icon */
+.verify-icon {
+  font-size: 55px;
+  margin-bottom: 15px;
+  color: #f7c12f;
+}
+
+/* Main big text */
+.verify-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #fff;
+}
+
+/* Message text */
+.verify-message {
+  font-size: 14px;
+  color: #ccc;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* Highlighted note */
+.verify-note {
+  color: #f7c12f;
+  font-size: 13px;
+  font-weight: 500;
+  display: block;
+  margin-top: 10px;
+}
+
+/* Go to Login Button */
+.verify-login-btn {
+  width: 100%;
+  padding: 14px;
+  background: #f7c12f;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 15px;
+  color: #000;
+  font-weight: 600;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+.verify-login-btn:hover {
+  background: #ffe08a;
+}
+
+/* Footer small text */
+.verify-footer {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #777;
+}
