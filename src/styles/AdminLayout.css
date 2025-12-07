@@ -1,0 +1,128 @@
+/* ================================
+   ADMIN LAYOUT CONTAINER
+=================================== */
+.admin-layout-container {
+  display: flex;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background: #0a0a0a;
+  color: #fff;
+}
+
+/* ================================
+   SIDEBAR
+=================================== */
+.admin-sidebar {
+  width: 250px;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  position: fixed;
+  height: 100%;
+  transition: 0.3s ease;
+  z-index: 1000;
+}
+
+.admin-sidebar.hidden {
+  transform: translateX(-100%);
+}
+
+.admin-sidebar-logo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.admin-sidebar-logo img {
+  width: 100px;
+  height: auto;
+}
+
+.admin-sidebar-logo h2 {
+  color: #f7c12f;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.admin-sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sidebar-menu-item {
+  padding: 12px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #ccc;
+  transition: 0.25s ease;
+}
+
+.sidebar-menu-item:hover {
+  background: #f7c12f;
+  color: #000;
+}
+
+.sidebar-menu-item.active {
+  background: #f7c12f;
+  color: #000;
+}
+
+/* ================================
+   TOPBAR
+=================================== */
+.admin-topbar {
+  flex: 1;
+  margin-left: 250px;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.admin-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.admin-topbar-left img {
+  width: 40px;
+  height: auto;
+}
+
+.admin-topbar-left h3 {
+  color: #f7c12f;
+  font-size: 18px;
+}
+
+.admin-topbar-right {
+  font-size: 14px;
+  color: #ccc;
+}
+
+/* ================================
+   MAIN CONTENT
+=================================== */
+.admin-main-content {
+  flex: 1;
+  margin-left: 250px;
+  padding: 25px 30px;
+  min-height: calc(100vh - 60px);
+  background: linear-gradient(180deg, #0a0a0a, #111, #000);
+}
+
+/* FOOTER / WATERMARK */
+.admin-layout-footer {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.15);
+  margin-top: 30px;
+  }
