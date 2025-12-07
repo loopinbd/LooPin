@@ -1,11 +1,13 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
-// Pages
+// Public Pages
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import VerifyNotice from "./pages/VerifyNotice";
 import Terms from "./pages/Terms";
+
+// User Pages
 import Dashboard from "./pages/Dashboard";
 import Activation from "./pages/Activation";
 import PaymentForm from "./pages/PaymentForm";
@@ -17,7 +19,7 @@ import Support from "./pages/Support";
 // Components
 import Layout from "./components/Layout";
 
-// Routes
+// Route Guards
 import PrivateRoute from "./routes/PrivateRoute";
 import AdminRoute from "./routes/AdminRoute";
 
@@ -35,13 +37,14 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Public Routes */}
+
+        {/* ---------- Public Routes ---------- */}
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/verify-notice" element={<VerifyNotice />} />
         <Route path="/terms" element={<Terms />} />
 
-        {/* User Routes */}
+        {/* ---------- User Routes (Protected) ---------- */}
         <Route
           path="/"
           element={
@@ -59,7 +62,7 @@ function App() {
           <Route path="support" element={<Support />} />
         </Route>
 
-        {/* Admin Routes */}
+        {/* ---------- Admin Routes (Protected) ---------- */}
         <Route
           path="/admin"
           element={
@@ -76,6 +79,7 @@ function App() {
           <Route path="inbox" element={<AdminInbox />} />
           <Route path="users" element={<AdminUsers />} />
         </Route>
+
       </Routes>
     </Router>
   );
