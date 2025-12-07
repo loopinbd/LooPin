@@ -1,0 +1,99 @@
+/* ================================
+   ADMIN SET RATES PAGE CONTAINER
+=================================== */
+.admin-setrates-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 25px;
+  background: linear-gradient(180deg, #0a0a0a, #111, #000);
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+/* ================================
+   PAGE TITLE
+=================================== */
+.admin-setrates-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #f7c12f;
+  margin-bottom: 25px;
+}
+
+/* ================================
+   RATES FORM
+=================================== */
+.rates-form {
+  max-width: 500px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 30px 35px;
+  backdrop-filter: blur(10px);
+}
+
+/* INPUT FIELD */
+.rates-input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  outline: none;
+}
+
+.rates-input:focus {
+  border-color: #f7c12f;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* SAVE BUTTON */
+.save-btn {
+  width: 100%;
+  padding: 14px;
+  background: #f7c12f;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.save-btn:hover {
+  background: #ffe08a;
+}
+
+.save-btn:disabled {
+  background: #7a7a7a;
+  cursor: not-allowed;
+}
+
+/* STATUS MESSAGE */
+.rates-status {
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ccc;
+}
+
+.rates-status.success {
+  color: #0ea5e9;
+}
+
+.rates-status.error {
+  color: #f87171;
+}
+
+/* FOOTER / WATERMARK */
+.admin-setrates-footer {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.15);
+  margin-top: 30px;
+}
