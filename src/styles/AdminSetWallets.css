@@ -1,0 +1,99 @@
+/* ================================
+   ADMIN SET WALLETS PAGE CONTAINER
+=================================== */
+.admin-wallets-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 25px;
+  background: linear-gradient(180deg, #0a0a0a, #111, #000);
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+/* ================================
+   PAGE TITLE
+=================================== */
+.admin-wallets-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #f7c12f;
+  margin-bottom: 25px;
+}
+
+/* ================================
+   WALLETS FORM
+=================================== */
+.wallets-form {
+  max-width: 500px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 30px 35px;
+  backdrop-filter: blur(10px);
+}
+
+/* INPUT FIELD */
+.wallet-input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  outline: none;
+}
+
+.wallet-input:focus {
+  border-color: #f7c12f;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* SAVE BUTTON */
+.wallet-save-btn {
+  width: 100%;
+  padding: 14px;
+  background: #f7c12f;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.wallet-save-btn:hover {
+  background: #ffe08a;
+}
+
+.wallet-save-btn:disabled {
+  background: #7a7a7a;
+  cursor: not-allowed;
+}
+
+/* STATUS MESSAGE */
+.wallet-status {
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ccc;
+}
+
+.wallet-status.success {
+  color: #0ea5e9;
+}
+
+.wallet-status.error {
+  color: #f87171;
+}
+
+/* FOOTER / WATERMARK */
+.admin-wallets-footer {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.15);
+  margin-top: 30px;
+}
