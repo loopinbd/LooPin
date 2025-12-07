@@ -1,0 +1,137 @@
+/* ================================
+   WITHDRAW PAGE CONTAINER
+=================================== */
+.withdraw-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(180deg, #0a0a0a, #111, #000);
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+/* ================================
+   WITHDRAW BOX
+=================================== */
+.withdraw-box {
+  max-width: 500px;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 30px 35px;
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+/* TITLE */
+.withdraw-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #f7c12f;
+  margin-bottom: 18px;
+}
+
+/* DESCRIPTION */
+.withdraw-desc {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+/* SELECT PAYMENT METHOD */
+.payment-methods {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.payment-method {
+  flex: 1;
+  padding: 12px 0;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  text-align: center;
+  cursor: pointer;
+  transition: 0.25s ease;
+  font-weight: 500;
+}
+
+.payment-method.selected {
+  background: #f7c12f;
+  color: #000;
+}
+
+/* INPUT FIELDS */
+.withdraw-input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  outline: none;
+}
+
+.withdraw-input:focus {
+  border-color: #f7c12f;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* AVAILABLE BALANCE TEXT */
+.available-balance {
+  font-size: 13px;
+  color: #bbb;
+  margin-bottom: 15px;
+}
+
+/* WITHDRAW BUTTON */
+.withdraw-btn {
+  width: 100%;
+  padding: 14px;
+  background: #f7c12f;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.withdraw-btn:hover {
+  background: #ffe08a;
+}
+
+.withdraw-btn:disabled {
+  background: #7a7a7a;
+  cursor: not-allowed;
+}
+
+/* STATUS MESSAGES */
+.withdraw-status {
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ccc;
+}
+
+.withdraw-status.error {
+  color: #f87171;
+}
+
+.withdraw-status.success {
+  color: #0ea5e9;
+}
+
+/* FOOTER / WATERMARK */
+.withdraw-footer {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.15);
+  margin-top: 30px;
+  }
