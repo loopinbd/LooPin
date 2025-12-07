@@ -1,0 +1,79 @@
+/* ================================
+   WITHDRAW HISTORY PAGE CONTAINER
+=================================== */
+.withdraw-history-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(180deg, #0a0a0a, #111, #000);
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+/* ================================
+   PAGE TITLE
+=================================== */
+.withdraw-history-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #f7c12f;
+  margin-bottom: 25px;
+}
+
+/* ================================
+   HISTORY TABLE
+=================================== */
+.withdraw-history-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.03);
+}
+
+.withdraw-history-table th,
+.withdraw-history-table td {
+  padding: 12px 15px;
+  text-align: center;
+  font-size: 14px;
+  color: #ccc;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.withdraw-history-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: #f7c12f;
+  font-weight: 600;
+}
+
+/* STATUS BADGES */
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-pending {
+  background: #facc15;
+  color: #000;
+}
+
+.status-approved {
+  background: #0ea5e9;
+  color: #fff;
+}
+
+.status-rejected {
+  background: #f87171;
+  color: #fff;
+}
+
+/* FOOTER / WATERMARK */
+.withdraw-history-footer {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.15);
+  margin-top: 30px;
+}
